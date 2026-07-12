@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you cite this work, please use the metadata from this file."
+title: "Observable-Class Mismatch and the Corrected ^* Relation on Heisenberg Graphs: Block Normalisation, Central-Phase Contribution, and Structural Correspondence"
+type: software
+authors:
+  - family-names: "Beau"
+    given-names: "Jérôme"
+repository-code: "https://github.com/Cosmochrony/spectral-o14"
+url: "https://cosmochrony.org/science/spectral/program/o14/"
+doi: "10.5281/zenodo.19226272"
+license: "CC-BY-4.0"
+preferred-citation:
+  type: article
+  title: "Observable-Class Mismatch and the Corrected ^* Relation on Heisenberg Graphs: Block Normalisation, Central-Phase Contribution, and Structural Correspondence"
+  authors:
+    - family-names: "Beau"
+      given-names: "Jérôme"
+  year: 2026
+  doi: "10.5281/zenodo.19226272"
+  url: "https://doi.org/10.5281/zenodo.19226272"
