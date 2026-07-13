@@ -1,6 +1,6 @@
 This repository contains the source of the **O14** Cosmochrony paper  
-[*Observable-Class Mismatch and the Corrected δ → β* Relation on Heisenberg Graphs:
-Block Normalisation, Central-Phase Contribution, and Structural Correspondence*](out/SpectralO14.pdf).
+*Observable-Class Mismatch and the Corrected δ → β* Relation on Heisenberg Graphs:
+Block Normalisation, Central-Phase Contribution, and Structural Correspondence*.
 
 This work extends the **spectral admissibility sub-programme** by resolving
 the structural mismatch identified in **O13** (Source S2), which remained the
