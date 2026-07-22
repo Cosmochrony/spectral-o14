@@ -1,21 +1,23 @@
 This repository contains the source of the **O14** Cosmochrony paper  
-*Observable-Class Mismatch and the Corrected δ → β* Relation on Heisenberg Graphs:
-Block Normalisation, Central-Phase Contribution, and Structural Correspondence*.
+*Observable-Class Mismatch in the Proposed δ → β* Relation on Heisenberg Graphs:
+Block Normalisation, Central-Phase Diagnostics, and the Transfer Boundary*.
 
-This work extends the **spectral admissibility sub-programme** by resolving
-the structural mismatch identified in **O13** (Source S2), which remained the
-only explanation of the discrepancy between the exact exponent and the
-phenomenological target for $\beta^*$.
+**Version 1.0.1.** The exact capacity measurements and the A1--A3 mismatch taxonomy are
+unchanged. This version separates the intra-$q$ slope identity from endpoint/inter-$q$
+normalisation and scopes the reciprocal formula as a conditional cross-substrate diagnostic.
+
+This work extends the **spectral admissibility sub-programme** by analysing
+the structural mismatch identified in **O13** (Source S2).
 
 While **O13** established that the mismatch is not a finite-size artefact,
 it did not explain its origin. The present work provides this explanation
-by identifying and correcting the observable-class mismatch between:
+by identifying the observable-class mismatch between:
 
 - the **proxy-level observable** used in O7
 - the **exact Weil-block observable** measured in O12–O13
 
-The analysis is both **theoretical** (derivation of the corrected relation)
-and **numerical** (pipeline-based validation using O12/O13 outputs).
+The analysis is both **theoretical** (observable and estimator separation)
+and **numerical** (pipeline-based diagnostics using O12/O13 outputs).
 
 ---
 
@@ -25,29 +27,32 @@ The paper establishes that the relation
 \[
 \beta^* = \frac{1}{\delta + \tfrac12}
 \]
-is **not valid in the exact-block setting**, and must be replaced by:
+is **not derived natively in the exact-block setting**. Conditional on importing that
+LPS reciprocal prescription, the legacy O14 endpoint diagnostic is:
 \[
-\beta^* = \frac{1}{\delta_{\mathrm{eff}}(q) + \tfrac12} + \epsilon(q),
+\beta_{\mathrm{diag}} = \frac{1}{\delta_{\mathrm{end}}(q) + \tfrac12} + \epsilon(q),
 \]
 where:
 \[
-\delta_{\mathrm{eff}}(q)
+\delta_{\mathrm{end}}(q)
 = \hat\delta_{\mathrm{exact}}(q)
 - \delta_\gamma(q)
 - \eta \frac{\log q}{\log n^*(q)}.
   \]
 
-The correction has three structural components:
+The observable mismatch has three components:
 
 - **block heterogeneity** (A1)
 - **block normalisation by $q$** (A2)
 - **central-phase contribution** (A3)
 
-The normalisation exponent is identified as:
+The square-root benchmark is:
 \[
 \eta = \frac{1}{2},
 \]
-as the unique value compatible with Weil scaling and block aggregation.
+but it is not uniquely derived by the scaling argument.
+At fixed $q$, multiplication by $q^{-\eta}$ changes only the regression intercept, so
+$\eta\log q/\log n^*$ is an endpoint/inter-$q$ term, not an intra-$q$ slope correction.
 
 ---
 
@@ -67,20 +72,20 @@ Using the real BFS pipeline of **O12/O13**, the paper shows that:
   \[
   \delta_\gamma \ll 1
   \]
-- the dominant correction is the normalisation term:
+- the dominant displacement in the legacy endpoint diagnostic is:
   \[
   \eta \frac{\log q}{\log n_1} \approx 1.03\text{–}1.06
   \]
 
-The corrected exponent satisfies:
+The legacy endpoint diagnostic satisfies:
 \[
 \delta_{\mathrm{eff}}(q) < 5.0
 \quad \text{for all tested primes}.
 \]
 
-This leads to:
+Under the imported reciprocal formula, this leads to:
 \[
-\beta^* \approx 0.23\text{–}0.33,
+\beta_{\mathrm{diag}} \approx 0.23\text{–}0.33,
 \]
 which remains outside the phenomenological window $(0.09, 0.13)$.
 
@@ -88,18 +93,18 @@ which remains outside the phenomenological window $(0.09, 0.13)$.
 
 # Structural Role of O14
 
-O14 completes the logical chain initiated in O12–O13:
+O14 extends the logical sequence initiated in O12–O13:
 
 - **O11**: proxy-level observable
 - **O12**: exact Weil-block observable
 - **O13**: asymptotic falsification of finite-size hypothesis (S1)
-- **O14**: theoretical resolution of observable mismatch (S2)
+- **O14**: partial intra-$q$ resolution and transfer boundary for S2
 
 O14 is the first step that:
 
 - identifies the **exact source** of the mismatch
-- derives the **corrected structural relation**
-- tests it on the **real computational pipeline**
+- proves fixed-$q$ slope invariance under $q$-normalisation
+- evaluates the historical endpoint diagnostic on the **real computational pipeline**
 
 ---
 
@@ -112,10 +117,10 @@ O14 introduces several key advances:
   \[
   \hat\delta_{\mathrm{exact}} = \delta_{\mathrm{geom}} + \delta_\gamma
   \]
-- a derivation of the **normalisation exponent** $\eta = 1/2$
+- a square-root benchmark $\eta = 1/2$ for a future inter-$q$ estimator
 - identification of:
     - $\delta_\gamma$ as a **finite-window bias**
-    - $\epsilon(q)$ as the **observable trace of projection residuals**
+    - $\epsilon(q)$ as a **modelled variance term** in the conditional diagnostic
 - a **pipeline-based numerical section**, using real O12/O13 outputs
 - a clarification of:
     - **shell-level vs block-level observables**
@@ -130,29 +135,24 @@ The central conceptual outcome is that:
 - the mismatch is **not due to finite size**
 - the mismatch is **not due to the central phase**
 
-but instead:
-
-👉 it is dominated by **block normalisation**
-
-This implies that:
-
-- the corrected observable remains incompatible with the O7 relation
-- the discrepancy is therefore **structural at the level of the theory**
+The legacy endpoint displacement is dominated by its $q$-normalisation term, but that
+term does not alter the intra-$q$ fitted slope. Independently, the native Heisenberg
+growth law does not carry the O7 reciprocal prescription.
 
 ---
 
-# Outcome: Resolution of S2
+# Outcome: Partial Intra-$q$ Resolution of S2
 
-O14 resolves Source S2 in the following sense:
+O14 resolves the intra-$q$ bookkeeping in Source S2 in the following sense:
 
-- the mismatch is fully explained at the observable level
-- all correction terms are identified and quantified
-- the corrected relation is derived and tested
+- the mismatch classes are identified
+- fixed-$q$ slope invariance is explicit
+- the endpoint and cross-substrate layers are isolated as open assumptions
 
 The result is:
 
-- **Scenario S2-B is realised**
-- the O7 mapping $\delta \mapsto \beta^*$ does not extend to the exact regime
+- the historical endpoint diagnostic selects **Scenario S2-B**
+- the O7 mapping $\delta \mapsto \beta^*$ has no native Heisenberg derivation
 
 ---
 
@@ -181,21 +181,22 @@ but establishes their **domain of validity**.
 
 # Conceptual Structure
 
-O14 completes the extended chain:
+O14 continues the extended sequence:
 
 1. Observable defined (O7)
 2. Geometry resolved (O9)
 3. Representation adapted (O11)
 4. Exact observable extracted (O12)
 5. Asymptotics tested (O13)
-6. Observable-class corrected (O14)
+6. Observable and estimator layers separated (O14)
 
 The programme now establishes:
 
 - the observable is well-defined
 - the measurement is reliable
 - the asymptotic behaviour is controlled
-- the structural mismatch is explained
+- the intra-$q$ mismatch is classified
+- the endpoint/inter-$q$ estimator remains open
 
 ---
 
@@ -203,9 +204,9 @@ The programme now establishes:
 
 O14 provides:
 
-- a full derivation of the corrected δ → β* relation
+- a proof that constant-in-$n$ block normalisation cannot change an intra-$q$ slope
 - a decomposition of all correction terms
-- a pipeline-based validation
+- a pipeline-based evaluation of the historical diagnostic
 - a precise localisation of the remaining gap
 
 ---
@@ -214,7 +215,8 @@ O14 provides:
 
 The remaining problem is now clearly identified:
 
-- the corrected relation does **not recover** the phenomenological range
+- a native Heisenberg growth carrier for the pair observable is absent
+- the inter-$q$ estimator has not been defined and derived
 
 This implies that at least one of the following must be revised:
 
@@ -226,19 +228,19 @@ This implies that at least one of the following must be revised:
 
 # Open Directions
 
-1. **Analytical derivation of η (O14-O1)**  
-   Rigorous derivation from metaplectic phase mixing
+1. **Inter-$q$ estimator and η (O14-O1)**
+   Define the estimator before deriving its normalisation from metaplectic phase mixing
 
-2. **Quark and neutrino sectors (O14-O2)**  
-   Extension of the corrected relation to other representations
+2. **Quark and neutrino sectors (O14-O2)**
+   Extension of the conditional diagnostic to other representations
 
-3. **Refined central-phase correction (O14-O3)**  
+3. **Refined central-phase correction (O14-O3)**
    Beyond the Weil-bound estimate
 
-4. **Block-level phase observable (O14-O4)**  
+4. **Block-level phase observable (O14-O4)**
    Extract $z_b^{(c)}(n)$ before Gram–Schmidt to test $\delta_\gamma$ directly
 
-5. **Revised amplification mechanism**  
+5. **Revised amplification mechanism**
    Adapt O3 to the exact-block regime
 
 ---
@@ -251,7 +253,7 @@ The programme is now:
 - free of geometric obstruction (**O8–O9**)
 - free of representation obstruction (**O10–O12**)
 - asymptotically validated (**O13**)
-- structurally corrected (**O14**)
+- explicit about the estimator and transfer boundary (**O14**)
 
 It does not assume:
 
@@ -273,8 +275,8 @@ paper/
 
 If you reference this work, please cite:
 
-J. Beau, Observable-Class Mismatch and the Corrected δ → β* Relation on Heisenberg Graphs:
-Block Normalisation, Central-Phase Contribution, and Structural Correspondence,
+J. Beau, Observable-Class Mismatch in the Proposed δ → β* Relation on Heisenberg Graphs:
+Block Normalisation, Central-Phase Diagnostics, and the Transfer Boundary,
 Zenodo, 2026.
 
 # Acknowledgements

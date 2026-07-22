@@ -1,10 +1,16 @@
 \documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{geometry}
 \usepackage{doi}
 \geometry{margin=1in}
+
+\input{glyphtounicode}
+\pdfgentounicode=1
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -13,46 +19,50 @@
 \newtheorem{definition}{Definition}
 \newtheorem{remark}{Remark}
 
-\title{Observable-Class Mismatch and the Corrected $\delta \mapsto \beta^{*}$ Relation
+\title{Observable-Class Mismatch in the Proposed $\delta \mapsto \beta^{*}$ Relation
 on Heisenberg Graphs:\\
-Block Normalisation, Central-Phase Contribution, and Structural Correspondence}
+Block Normalisation, Central-Phase Diagnostics, and the Transfer Boundary}
 
 \author{J\'er\^ome Beau}
-\date{2026}
+\date{2026\\Version 1.0.1}
 
 \begin{document}
   \maketitle
 
   \begin{abstract}
-    Papers O12--O13~\cite{Beau2026a16,Beau2026a17} established that the exact Weil-block capacity
+    Papers O12--O13 established that the exact Weil-block capacity
     exponent $\hat{\delta}_{\mathrm{exact}}(q)$ decreases monotonically from $4.80$ to $3.59$ as $q$
     ranges over $\{29,61,101,151,211\}$, refuting the finite-size hypothesis S1 and ruling out
     convergence toward the phenomenological target $\delta \in [7.4,10.6]$.
-    The tension between $\hat{\delta}_{\mathrm{exact}}$ and the window $\beta^{*} \in (0.09,0.13)$~\cite{Beau2026a7}
-    is therefore not a numerical artefact but a structural mismatch identified as
-    Source~S2 in O13: the proxy-level derivation of the $\delta \mapsto \beta^{*}$ relation~\cite{Beau2026a11} does
+    The tension between $\hat{\delta}_{\mathrm{exact}}$ and the window
+    $\beta^{*} \in (0.09,0.13)$ is therefore not a numerical artefact.
+    Source~S2 in O13 identified an observable-class mismatch: the proxy-level
+    $\delta \mapsto \beta^{*}$ prescription does
     not account for the block-normalisation by $|S_n|$, the internal block
     dimension $q$, or the central-phase contribution $\psi_c(\gamma + bx)$ present in every exact Weil fingerprint.
-    This paper resolves S2.
-    We identify the observable-class mismatch precisely: the O7 derivation~\cite{Beau2026a11} operates
+    We identify that mismatch precisely: the O7 argument operates
     on a scalar global capacity, while $\hat{\delta}_{\mathrm{exact}}$ is extracted from a
     block-by-block mean over representations of internal dimension $q$.
     We decompose the exact observable as
     $\Sigma_n^{(c)} = \Sigma_n^{\mathrm{geom}} + \Sigma_n^{\gamma}$,
-    derive an effective exponent $\delta_{\mathrm{eff}}(q)$ that absorbs the central-phase
-    contribution, and obtain the corrected structural relation
+    and isolate the central-phase contribution.
+    A factor $q^{-\eta}$ is constant in an intra-$q$ regression and therefore cannot change
+    its fitted slope; the earlier subtraction $\eta\log q/\log n^{*}$ belongs only to an
+    endpoint or inter-$q$ estimator.
+    Conditional on importing the LPS capacity-to-rate prescription, that estimator defines the
+    phenomenological diagnostic
     \[
-      \beta^{*} = \frac{1}{\delta_{\mathrm{eff}} + \tfrac{1}{2}} + \epsilon(q),
+      \beta_{\mathrm{diag}} = \frac{1}{\delta_{\mathrm{end}} + \tfrac{1}{2}} + \epsilon(q),
     \]
-    where $\epsilon(q) \to 0$ as $q \to \infty$.
-    Numerical re-fits of $\delta_{\mathrm{eff}}$ at $q \in \{29,61,101,151,211\}$ determine which of
-    two scenarios is realised: S2-A (reconciliation, $\beta^{*}$ recovered in $(0.09,0.13)$) or
-    S2-B (structural revision of the amplification mechanism of O3~\cite{Beau2026a7}).
+    where $\epsilon(q)$ remains a modelled variance term.
+    This is not a native Heisenberg derivation of $\beta^{*}$.
+    The numerical diagnostic at $q \in \{29,61,101,151,211\}$ selects the paper's S2-B branch;
+    the native transfer obstruction is independent of that numerical outcome.
   \end{abstract}
 
   \paragraph{Keywords.}
-    Heisenberg graphs, exact Weil-block capacity, projective capacity, corrected
-    \(\delta \to \beta^*\) relation, block normalisation, central-phase bias, spectral admissibility,
+    Heisenberg graphs, exact Weil-block capacity, projective capacity, conditional
+    \(\delta \to \beta^*\) prescription, block normalisation, central-phase bias, spectral admissibility,
     phase coherence, shell-level versus block-level observables.
 
     \clearpage
@@ -67,14 +77,18 @@ Block Normalisation, Central-Phase Contribution, and Structural Correspondence}
   spectral properties of relational graphs associated with binary polyhedral subgroups of
   $\mathrm{SU}(2)$.
   Within the admissibility sub-programme, a central chain of papers---O3
-  through O7~\cite{Beau2026a7,Beau2026a8,Beau2026a9,Beau2026a10,Beau2026a11}---derives the relation
+  through O7~\cite{Beau2026a7,Beau2026a8,Beau2026a9,Beau2026a10,Beau2026a11}---proposes, on a
+  changing-degree LPS family, the relation
   \begin{equation}
     \label{eq:beta_delta}
     \beta^{*} = \frac{1}{\delta + \tfrac{1}{2}},
   \end{equation}
   linking the cascade exponent $\beta^{*}$ to the capacity decay exponent $\delta$.
-  Charged-lepton mass ratios constrain $\beta^{*} \in (0.09, 0.13)$~\cite{Beau2026a7}, which via
-  \eqref{eq:beta_delta} requires $\delta \in [7.4, 10.6]$.
+  Charged-lepton mass ratios constrain $\beta^{*} \in (0.09, 0.13)$~\cite{Beau2026a7}; importing
+  \eqref{eq:beta_delta} then induces the target $\delta \in [7.4, 10.6]$.
+  The equation is not a native consequence of the fixed-degree Heisenberg Cayley cascade:
+  the corpus supplies neither its changing valence nor a growth process carrying the pair
+  observable~\cite{Beau2026sgn}.
 
   Papers O8--O13~\cite{Beau2026a12,Beau2026a13,Beau2026a14,Beau2026a15,Beau2026a16,Beau2026a17}
   develop the computational machinery to measure $\delta$ on Heisenberg graphs
@@ -85,8 +99,8 @@ Block Normalisation, Central-Phase Contribution, and Structural Correspondence}
   The finite-size hypothesis S1 (``larger primes will push $\hat{\delta}_{\mathrm{exact}}$ into
   $[7.4,10.6]$'') is ruled out.
 
-  O13 identifies Source~S2 as the remaining explanation of the tension: the structural relation
-  \eqref{eq:beta_delta} was derived at the proxy level and may not apply without modification to
+  O13 identifies Source~S2 as an explanation of the tension: the proposed relation
+  \eqref{eq:beta_delta} was formulated at the proxy level and does not apply natively to
   the exact Weil-block observable.
   Two specific gaps are named in O13, Section~8.3:
   \begin{enumerate}
@@ -103,13 +117,14 @@ Block Normalisation, Central-Phase Contribution, and Structural Correspondence}
     \eqref{eq:beta_delta}.
   \end{enumerate}
 
-  The present paper resolves S2 by re-deriving the $\delta \mapsto \beta^{*}$ relation in the
-  exact-block setting.
+  The present paper resolves the intra-$q$ observable bookkeeping in S2 and records the remaining
+  transfer boundary.
   \textbf{S1 is not revisited here}: it was closed definitively by O13, and all data and arguments
   pertaining to S1 are taken as established.
-  O14 has a single logical target: explaining why the proxy-level relation \eqref{eq:beta_delta}
-  changes class when $\delta$ is replaced by $\hat{\delta}_{\mathrm{exact}}$, and deriving the
-  corrected relation that holds at the exact-block level.
+  O14 has a single logical target: explaining why the proxy-level prescription
+  \eqref{eq:beta_delta} changes class when $\delta$ is replaced by
+  $\hat{\delta}_{\mathrm{exact}}$, and separating exact-block identities from conditional
+  endpoint and cross-substrate diagnostics.
 
   \subsection{Position in the O-series}
     \label{sec:position}
@@ -118,7 +133,7 @@ Block Normalisation, Central-Phase Contribution, and Structural Correspondence}
     O11 (proxy observable~\cite{Beau2026a15}),
     O12 (exact observable~\cite{Beau2026a16}),
     O13 (asymptotic stability and closure of S1~\cite{Beau2026a17}),
-    O14 (present paper: theoretical correspondence, closure of S2).
+    O14 (present paper: observable bookkeeping and transfer boundary).
     O14 does not add numerical measurements; it supplies the structural theory that was identified
     as missing in O13~\S8.3.
 
@@ -139,29 +154,28 @@ Block Normalisation, Central-Phase Contribution, and Structural Correspondence}
       $q \in \{29,61,101,151,211\}$ are inputs to O14, not outputs.
 
       \item[$\delta_{\mathrm{eff}}$]
-      The \emph{corrected observable}: $\hat{\delta}_{\mathrm{exact}}$ after subtraction of the
-      central-phase bias $\delta_{\gamma,\mathrm{corr}}$ and the normalisation correction
+      A legacy \emph{endpoint-normalised diagnostic}: $\hat{\delta}_{\mathrm{exact}}$ after
+      subtraction of a modelled central-phase bias and
       $\eta \cdot \log q / \log n^{*}$.
-      It is the exponent that enters the structural relation \eqref{eq:beta_delta} once the
-      observable-class mismatch has been accounted for.
+      It is not the intra-$q$ OLS exponent: multiplication by $q^{-\eta}$ changes the intercept,
+      not the slope in $\log n$.
       The normalisation exponent $\eta$ is a \emph{benchmark parameter}: its central value
       $\eta = 1/2$ is used in all numerical tables, but its analytical derivation from the
       metaplectic phase structure of $\rho_c$ is open direction O14-O1
       (Section~\ref{sec:open}).
 
       \item[$\beta^{*}$]
-      The \emph{inferred structural parameter}: the cascade exponent entering the mass-ratio
+      The phenomenological cascade parameter entering the mass-ratio
       formula of O3~\cite{Beau2026a7}, constrained phenomenologically to
       $\beta^{*} \in (0.09, 0.13)$.
-      It is not directly measured; it is inferred from $\delta_{\mathrm{eff}}$ via the corrected
-      relation \eqref{eq:beta_corrected}.
-      Whether $\beta^{*}$ falls in $(0.09,0.13)$ after correction determines which scenario
-      (S2-A or S2-B) is realised.
+      It is not directly measured by O14.
+      Applying \eqref{eq:beta_corrected} produces only a conditional diagnostic because the
+      reciprocal law is imported from the LPS model.
     \end{description}
 
     The distinction between $\hat{\delta}_{\mathrm{exact}}$ (measured, procedure-dependent) and
-    $\delta_{\mathrm{eff}}$ (theory-corrected, procedure-independent in the $q \to \infty$ limit)
-    is the central conceptual contribution of O14.
+    $\delta_{\mathrm{eff}}$ (an endpoint/inter-$q$ diagnostic) is central to the corrected
+    interpretation of O14.
 
   \subsection{Main results}
     \label{sec:results_summary}
@@ -174,12 +188,11 @@ Block Normalisation, Central-Phase Contribution, and Structural Correspondence}
       $\hat{\delta}_{\mathrm{exact}} = \delta_{\mathrm{geom}} + \delta_{\gamma}$,
       where $\delta_{\gamma}$ is the central-phase contribution
       (Section~\ref{sec:decomposition}).
-      \item We derive the corrected structural relation
-      $\beta^{*} = 1/(\delta_{\mathrm{eff}} + 1/2) + \epsilon(q)$
-      and show $\epsilon(q) \to 0$ as $q \to \infty$
+      \item We separate the exact intra-$q$ slope from the endpoint/inter-$q$ diagnostic and
+      state the reciprocal output only under the imported two-substrate hypothesis
       (Section~\ref{sec:corrected_relation}).
-      \item We re-fit $\delta_{\mathrm{eff}}$ numerically and determine which scenario (S2-A or S2-B)
-      is realised
+      \item We evaluate the historical $\delta_{\mathrm{eff}}$ diagnostic numerically and show that
+      it selects S2-B
       (Section~\ref{sec:numerical}).
     \end{enumerate}
 
@@ -243,26 +256,24 @@ Block Normalisation, Central-Phase Contribution, and Structural Correspondence}
 
     Consequently, $\hat{\delta}_{\mathrm{exact}}$ is a property of the \emph{mean}
     $\bar{\Sigma}_n$, not of an individual scalar observable.
-    The O7 derivation operates on the latter; its extension to the former requires an averaging
-    argument whose validity is established here for the first time.
+    The O7 argument operates on the latter; its extension to the former supplies only the scalar
+    power-law premise and leaves the growth-model premises separate.
 
-    \begin{proposition}[Mean universality suffices]
+    \begin{proposition}[Scope of mean universality]
       \label{prop:mean_universality}
       Suppose $\bar{\Sigma}_n \sim C_0 \, n^{-\delta_{\mathrm{eff}}}$ holds with $R^2 \geq 0.97$ over
       a fitting window satisfying condition~(E1$'$).
-      Then the structural relation \eqref{eq:beta_delta} applies to $\delta_{\mathrm{eff}}$ in place
-      of $\delta$, provided the variance correction $\epsilon(q)$ defined in
-      Section~\ref{sec:corrected_relation} is included.
+      Then the mean has a well-defined finite-window decay exponent.
+      This discharges only the scalar power-law premise of the O7 argument.
+      It does not supply the changing-degree growth equation, the multiplicative coupling of
+      redundancy to its productive frontier, or the identification of the Heisenberg mean with
+      the LPS capacity variable.
     \end{proposition}
 
     \begin{proof}
-      The O7 derivation requires only that the capacity observable decay as a power law with a
-      well-defined exponent.
-      Mean universality supplies this requirement for $\bar{\Sigma}_n$.
-      The correction $\epsilon(q)$ accounts for the residual block-by-block dispersion not captured
-      by the mean; it satisfies $|\epsilon(q)| \leq C \cdot V_n^{\max}(q)$ where $V_n^{\max}$ is the
-      peak inter-block variance ratio, which vanishes as $q \to \infty$ by the O13 universality
-      result~\cite{Beau2026a17}.
+      The assumed fit supplies the stated exponent for $\bar{\Sigma}_n$ by definition.
+      The remaining premises concern a distinct growth model and do not follow from mean
+      universality~\cite{Beau2026sgn}.
     \end{proof}
 
   \subsection{Failure of assumption (A2): normalisation by $q$}
@@ -292,11 +303,29 @@ Block Normalisation, Central-Phase Contribution, and Structural Correspondence}
       the Weil projection geometry.
     \end{definition}
 
-    The central claim of this section is that the O7 derivation implicitly assumes $\alpha = 1$,
-    $\eta = 0$ (normalisation by $|S_n|$ only), while the exact observable requires
-    $\alpha = 1$, $\eta > 0$.
-    Determining $\eta$ analytically from the metaplectic phase structure of $\rho_c$ is open
-    direction O14-O1 (Section~\ref{sec:open}).
+    \begin{proposition}[Fixed-$q$ slope invariance]
+      \label{prop:fixed_q_invariance}
+      At fixed $q$, multiplication of a positive observable by $q^{-\eta}$ leaves every OLS slope
+      against $\log n$ unchanged.
+      Hence a term $\eta\log q/\log n^{*}$ cannot be subtracted from the intra-$q$ fitted exponent
+      $\hat\delta_{\mathrm{exact}}(q)$.
+    \end{proposition}
+
+    \begin{proof}
+      In logarithmic coordinates,
+      $\log(q^{-\eta}\Sigma_n) = \log\Sigma_n-\eta\log q$.
+      The second term is constant across the fitting window, so it changes only the regression
+      intercept.
+      A quotient by $\log n^{*}$ arises only in an endpoint estimator such as
+      $-\log\Sigma_{n^{*}}/\log n^{*}$, or in a separately specified inter-$q$ estimator.
+    \end{proof}
+
+    The distinction is therefore estimator-dependent.
+    The exact observable fixes the shell normalisation $\alpha=1$.
+    A factor $q^{-\eta}$ may be useful for comparing amplitudes across primes, but it cannot
+    correct an intra-$q$ slope.
+    Defining an inter-$q$ estimator and determining $\eta$ for it remain open direction O14-O1
+    (Section~\ref{sec:open}).
 
   \subsection{Failure of assumption (A3): central-phase contribution}
     \label{sec:a3}
@@ -383,17 +412,22 @@ For a power-law fit over the window $[n_0, n^{*}]$, the contribution of a term o
 $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^{*}$.
   \end{proof}
 
-  \section{Corrected Structural Relation}
+  \section{Conditional Reciprocal Diagnostic}
   \label{sec:corrected_relation}
 
-  \begin{theorem}[Corrected $\delta \mapsto \beta^{*}$ relation]
+  \begin{proposition}[Conditional endpoint diagnostic]
     \label{thm:corrected}
-    Under the block-normalisation of Definition~\ref{def:block_normalised} with exponents
-    $(\alpha, \eta)$ and the central-phase correction of Proposition~\ref{prop:gamma_bias}, the
-    structural relation \eqref{eq:beta_delta} generalises to
+    Assume all of the following:
+    (i) the LPS capacity-to-rate prescription \eqref{eq:beta_delta} is imported as a
+    cross-substrate hypothesis;
+    (ii) $\delta_{\mathrm{eff}}$ is defined by an endpoint or specified inter-$q$ estimator rather
+    than the intra-$q$ OLS slope; and
+    (iii) the central-phase and block-variance models used below hold.
+    Then the historical O14 bookkeeping defines the phenomenological diagnostic
     \begin{equation}
       \label{eq:beta_corrected}
-      \beta^{*} = \frac{1}{\delta_{\mathrm{eff}}(q) + \tfrac{1}{2}} + \epsilon(q),
+      \beta_{\mathrm{diag}}(q)
+      = \frac{1}{\delta_{\mathrm{eff}}(q) + \tfrac{1}{2}} + \epsilon(q),
     \end{equation}
     where
     \begin{equation}
@@ -402,28 +436,28 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
       - \delta_{\gamma,\mathrm{corr}}(q)
       - \eta \cdot \frac{\log q}{\log n^{*}(q)},
     \end{equation}
-    and $\epsilon(q) = O(V_n^{\max}(q))$ is the block-variance correction satisfying
-    $\epsilon(q) \to 0$ as $q \to \infty$.
-  \end{theorem}
+    and $\epsilon(q)=O(V_n^{\max}(q))$ is a modelled block-variance term.
+    The formula does not identify $\beta_{\mathrm{diag}}$ with the native Heisenberg span-growth
+    exponent or establish $\beta^{*}$.
+  \end{proposition}
 
   \begin{proof}
-    The O7 derivation~\cite{Beau2026a11} yields \eqref{eq:beta_delta} for a scalar observable
-    decaying as $n^{-\delta}$.
-    Theorem~\ref{thm:corrected} follows by applying the O7 argument to
-    $\bar{\Sigma}_n^{\mathrm{norm}}$ in place of the proxy capacity, using
-    Proposition~\ref{prop:mean_universality} to justify the extension to the mean observable, and
-    Propositions~\ref{prop:exponent_decomp} and~\ref{prop:gamma_bias} to control the corrections.
+    Under premise~(i), substitution of the endpoint definition \eqref{eq:delta_eff} into the
+    imported reciprocal law gives \eqref{eq:beta_corrected}; premise~(iii) appends the stated
+    variance term.
+    Proposition~\ref{prop:fixed_q_invariance} shows why this is not a correction of the intra-$q$
+    regression slope.
+    None of these algebraic substitutions supplies a native Heisenberg growth equation.
   \end{proof}
 
   \begin{remark}
-    The correction \eqref{eq:delta_eff} has the correct sign: $\delta_{\mathrm{eff}}(q)$ is smaller
-    than $\hat{\delta}_{\mathrm{exact}}(q)$ by both the central-phase bias and the normalisation
-    correction.
-    Whether the net correction is large enough to bring $\beta^{*}$ into the phenomenological window
-    $(0.09, 0.13)$ is a quantitative question answered in Section~\ref{sec:numerical}.
+    In the endpoint diagnostic, \eqref{eq:delta_eff} lowers
+    $\hat{\delta}_{\mathrm{exact}}(q)$ by both modelled terms.
+    At fixed $q$, only the central-phase component can affect the fitted slope; the factor
+    $q^{-\eta}$ changes its intercept.
   \end{remark}
 
-  \section{Pipeline-Based Numerical Check of the Corrected Relation}
+  \section{Pipeline-Based Evaluation of the Historical Diagnostic}
   \label{sec:numerical}
 
   \subsection{Status of this section}
@@ -473,20 +507,24 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
       directly from the pipeline because $\bar\ell_\gamma$ is a shell-level quantity,
       not a block-level phase bias.
 
-    \paragraph{Normalisation correction.}
+    \paragraph{Endpoint-normalisation diagnostic.}
       With benchmark $\eta = 1/2$~[H3] and the actual fitting-window depth $n_1$ from O13:
       \begin{equation}
         \label{eq:norm_corr}
-        \text{norm.\ correction} = \eta \cdot \frac{\log q}{\log n_1}.
+        \text{endpoint term} = \eta \cdot \frac{\log q}{\log n_1}.
       \end{equation}
       This uses the real $n_1 \in \{5, 7, 10, 12, 13\}$ for
-      $q \in \{29, 61, 101, 151, 211\}$ respectively, yielding corrections in
+      $q \in \{29, 61, 101, 151, 211\}$ respectively, yielding endpoint terms in
       $[1.00, 1.06]$, roughly twice the analytical approximation of $0.5$.
+      By Proposition~\ref{prop:fixed_q_invariance}, these numbers do not correct the
+      intra-$q$ OLS slopes.
 
-    \paragraph{Corrected exponent and $\beta^{*}$.}
+    \paragraph{Legacy endpoint exponent and reciprocal diagnostic.}
       $\delta_{\mathrm{eff}} = \hat{\delta}_{\mathrm{exact}} - \delta_{\gamma} -
-      \text{norm.\ correction}$,
-      and $\beta^{*}_{\mathrm{corr}} = 1/(\delta_{\mathrm{eff}} + 1/2)$.
+      \text{endpoint term}$,
+      and $\beta_{\mathrm{diag}} = 1/(\delta_{\mathrm{eff}} + 1/2)$.
+      These columns reproduce the historical O14 diagnostic; they are not native fitted
+      exponents or derived cascade parameters.
 
       \begin{table}[ht]
         \centering
@@ -495,17 +533,17 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
           window $[n_0, n_1]$.
           $\mathrm{Var}(\theta) = -2\log C(q)$.
           $\delta_\gamma$ via ansatz~[H1]; $\eta = 1/2$ benchmark~[H3].
-          norm.\ corr.\ $= \eta\log q/\log n_1$ with actual $n_1$ from O13~\cite{Beau2026a17}.
+          endpoint term $= \eta\log q/\log n_1$ with actual $n_1$ from O13~\cite{Beau2026a17}.
           Input $\hat\delta_{\mathrm{exact}}$ from O12--O13~\cite{Beau2026a16,Beau2026a17}.
           The high coherence $C(q) \approx 0.93$ and the negligible $\delta_\gamma$
-          show that the dominant correction is the normalisation term, not the
-          central-phase bias (Section~\ref{sec:pipeline_results}).}
+          show that the dominant numerical displacement in the legacy diagnostic is the endpoint
+          term, not the central-phase bias (Section~\ref{sec:pipeline_results}).}
         \label{tab:phase_variance}
         \begin{tabular}{ccccccccc}
           \hline
           $q$ & $\hat\delta_{\mathrm{exact}}$ & $C(q)$ & $\mathrm{Var}(\theta)$ &
           $\delta_\gamma$~[H1] & norm.\ [H3] & $\delta_{\mathrm{eff}}$ &
-          $\beta^{*}_{\mathrm{O7}}$ & $\beta^{*}_{\mathrm{corr}}$ \\
+          $\beta_{\mathrm{O7}}^{\mathrm{diag}}$ & $\beta_{\mathrm{end}}^{\mathrm{diag}}$ \\
           \hline
           29  & 4.416 & 0.9249 & 0.1561 & 0.0232 & 1.0461 & 3.3464 & 0.2034 & 0.2600 \\
           61  & 4.799 & 0.9492 & 0.1042 & 0.0127 & 1.0563 & 3.7296 & 0.1887 & 0.2364 \\
@@ -516,12 +554,11 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
         \end{tabular}
       \end{table}
 
-  \subsection{Derivation of the block-normalisation exponent $\eta = 1/2$}
+  \subsection{Benchmark scaling for the inter-$q$ exponent $\eta$}
   \label{subsec:eta-derivation}
 
-  We show that $\eta = 1/2$ is not an arbitrary benchmark but the unique value consistent
-  with the combined scaling of Weil amplitudes, block multiplicity, and central-phase
-  decorrelation.
+  This subsection records the scaling motivation for the benchmark $\eta=1/2$.
+  It does not derive an intra-$q$ slope correction or uniquely determine an inter-$q$ estimator.
 
   \paragraph{Block decomposition.}
     Write the exact observable as a sum over Weil blocks:
@@ -552,26 +589,25 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
       \mathcal{O}(q) \sim q^{-1/2} \cdot q^{1/2-\delta_{\gamma}} = q^{-\delta_{\gamma}}.
     \end{equation}
 
-  \paragraph{Fixing $\eta$.}
+  \paragraph{Benchmarking $\eta$.}
     The block-normalised observable is $\mathcal{O}_{\mathrm{norm}}(q) = q^{-\eta}\mathcal{O}(q)$,
     and the effective exponent definition requires
     $\mathcal{O}_{\mathrm{norm}}(q) \sim q^{-\delta_{\mathrm{eff}}}$.
-    Consistency of \eqref{eq:O_scaling} with the definition
-    $\delta_{\mathrm{eff}} = \delta_{\gamma} + \eta$ yields
+    Choosing the square-root benchmark gives
     \begin{equation}
       \label{eq:eta_fixed}
       \eta = \tfrac{1}{2}.
     \end{equation}
-    The value $\eta = 1/2$ reflects the universal square-root balance: Weil amplitudes
+    The value $\eta = 1/2$ reflects a square-root balance: Weil amplitudes
     scale as $q^{-1/2}$, block count grows as $q$, and central-phase decorrelation reduces
     coherent accumulation from $q^{1/2}$ to $q^{1/2-\delta_{\gamma}}$.
 
   \paragraph{Status.}
-    The derivation identifies $\eta = 1/2$ as the unique value compatible with Weil scaling
-    and central-phase decorrelation.
-    A fully rigorous proof requires explicit mixing estimates for the phases
-    $\theta_b(q)$ across blocks, which is left as open direction O14-O1
-    (Section~\ref{sec:open}).
+    This is a modelling benchmark, not a uniqueness result: equation~\eqref{eq:O_scaling} gives
+    $\delta_{\mathrm{eff}}=\delta_\gamma+\eta$ once an inter-$q$ normalisation is chosen, but does
+    not select $\eta$ by itself.
+    A specified inter-$q$ estimator and mixing estimates for the phases $\theta_b(q)$ are left as
+    open direction O14-O1 (Section~\ref{sec:open}).
 
   \subsection{Connection between $\delta_{\gamma}$, $\epsilon(q)$, and phase variance}
   \label{subsec:eps_connection}
@@ -582,16 +618,14 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
     In the spectral setting, these fluctuations manifest as phase decorrelation across
     Weil blocks, controlled by the central coordinate $\gamma$.
 
-    The residual term $\epsilon(q)$ in \eqref{eq:beta_corrected} is not a free parameter
-    but the observable imprint of these projection residuals, propagated through the
-    nonlinear inversion formula defining $\beta^{*}$:
+    Conditional on the reciprocal model, the residual term $\epsilon(q)$ in
+    \eqref{eq:beta_corrected} is modelled as the propagation of projection residuals:
     \begin{equation}
       \label{eq:eps_F}
       \epsilon(q) = \mathcal{F}\!\left(\delta_{\gamma}(q)\right) - \delta_{\gamma}(q),
     \end{equation}
-    where $\mathcal{F}$ encodes the nonlinear propagation of the phase bias through
-    $\beta^{*} = 1/(\delta_{\mathrm{eff}} + 1/2)$.
-    As $q \to \infty$, $\delta_{\gamma}(q) \to 0$ and $\epsilon(q) \to 0$.
+    where $\mathcal{F}$ encodes the assumed nonlinear propagation of the phase bias through
+    the reciprocal diagnostic.
 
   \paragraph{Phase-variance relation.}
     Define the phase coherence factor $C(q)$ as in \eqref{eq:Cq_def}.
@@ -602,16 +636,13 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
       \label{eq:delta_gamma_var}
       \delta_{\gamma}(q) \approx \frac{\mathrm{Var}(\theta)(q)}{2\log q}.
     \end{equation}
-    Since $\epsilon(q)$ is controlled by $\delta_{\gamma}(q)$, it follows that:
-    bounded phase variance implies $\epsilon(q) \to 0$;
-    slowly growing variance implies $\epsilon(q)$ decays;
-    anomalous variance growth implies a persistent correction.
+    Within this ansatz, bounded phase variance gives $\epsilon(q)\to0$;
+    slowly growing variance gives decay; and anomalous variance growth gives a persistent term.
 
   \paragraph{Consequence.}
-    The pair $(\delta_{\gamma}(q), \eta)$ completely determines the correction structure of
-    Theorem~\ref{thm:corrected}: $\eta = 1/2$ fixes the normalisation sector,
-    $\delta_{\gamma}(q)$ controls the leading correction, and $\epsilon(q)$ is the
-    subleading finite-scale residual.
+    Within the legacy diagnostic, the pair $(\delta_{\gamma}(q),\eta)$ determines the displayed
+    endpoint displacement.
+    It does not determine a native capacity-to-rate law.
 
   \subsection{Pipeline validation results and interpretation}
   \label{sec:pipeline_results}
@@ -635,16 +666,18 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
     $\mathrm{Var}(\theta)(q) \in [0.09, 0.16]$, which via the ansatz~[H1] gives
     $\delta_\gamma \in [0.008, 0.023]$.
     This is negligible relative to $\hat\delta_{\mathrm{exact}} \in [3.6, 4.8]$.
-    \textbf{The central-phase bias $\delta_\gamma$ is not the dominant correction in
-    the pipeline mode.}
+    \textbf{The modelled central-phase bias $\delta_\gamma$ is not the dominant displacement in
+    the legacy pipeline diagnostic.}
 
-  \paragraph{Finding 3: normalisation correction dominates.}
+  \paragraph{Finding 3: endpoint term dominates the legacy diagnostic.}
     The term $\eta \cdot \log q/\log n_1$ evaluates to $\approx 1.03$--$1.06$,
     using the actual fitting-window depths $n_1 \in [5, 13]$ extracted from O13.
     This is roughly twice the value $0.5$ produced by the analytical approximation
     $n^* \approx q$ in MODE~A.
-    The normalisation correction is therefore the dominant and directly measurable
-    correction in the exact-block setting.
+    The endpoint term is therefore the dominant numerical displacement in the legacy
+    diagnostic.
+    It is computed from the fitting-window endpoint but is not a correction to the intra-$q$
+    regression slope.
 
   \paragraph{Interpretation.}
     The pipeline results reveal a conceptual refinement of the O14 theory.
@@ -662,28 +695,28 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
 
   \paragraph{What the pipeline validates.}
     Despite the above, the pipeline provides two concrete results.
-    First, it confirms $\delta_{\mathrm{eff}} < 5.0$ for all
-    $q \in \{29, 61, 101, 151, 211\}$ even with the real normalisation correction,
-    which is both larger and structurally justified.
-    Second, it shows that the normalisation term $\eta \cdot \log q/\log n_1$
-    is the dominant correction and can be extracted directly from the O12/O13
-    fitting windows without any phase model.
-    Both findings are consistent with Scenario~S2-B.
+    First, the legacy endpoint diagnostic gives $\delta_{\mathrm{eff}}<5.0$ for all
+    $q \in \{29, 61, 101, 151, 211\}$.
+    Second, the term $\eta\log q/\log n_1$ dominates that diagnostic, while the current pipeline
+    cannot measure the block-level phase bias directly.
+    The underlying intra-$q$ OLS exponents remain the reported
+    $\hat\delta_{\mathrm{exact}}$ values.
 
     \begin{figure}[ht]
       \centering
       \includegraphics[width=\textwidth]{../code/fig_SpectralO14_validation}
       \caption{BFS pipeline validation panels~(A)--(F), from O12/O13 data.
-        (A) $\hat\delta_{\mathrm{exact}}$ vs $\delta_{\mathrm{eff}}$ with target band $[7.4,10.6]$.
-        (B) $\beta^{*}$ uncorrected vs corrected with phenomenological window $(0.09,0.13)$.
+        (A) $\hat\delta_{\mathrm{exact}}$ vs the legacy endpoint diagnostic
+        $\delta_{\mathrm{eff}}$, with the imported target band $[7.4,10.6]$.
+        (B) Reciprocal diagnostics with the phenomenological window $(0.09,0.13)$.
         (C) Circular phase variance $\mathrm{Var}(\theta)(q) = -2\log\bar\ell_\gamma$ vs $\log q$;
         values are small ($0.09$--$0.16$) because $\gamma$ remains coherent in the fitting window.
         (D) Ansatz~[H1] check: $\delta_\gamma$ vs $\mathrm{Var}(\theta)/2\log q$.
         The ansatz is self-consistent but not directly testable from shell-level data
         (Section~\ref{sec:pipeline_results}).
         (E) $\epsilon(q)$ vs $\mathrm{Var}(\theta)(q)$; Pearson $r = -0.575$ ($p = 0.31$):
-        no significant correlation, consistent with $\delta_\gamma$ being negligible and
-        the dominant correction being the normalisation term (panel~A).
+        no significant correlation; the endpoint term dominates the numerical displacement in
+        panel~A.
         (F) Phase coherence factor $C(q) = \bar\ell_\gamma \in [0.92, 0.96]$:
         $\gamma$ is strongly coherent in the BFS fitting window.}
       \label{fig:validation}
@@ -691,45 +724,41 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
 
   \subsubsection*{Status of unresolved inputs}
 
-  Two inputs to the corrected relation \eqref{eq:beta_corrected} remain
+  Two inputs to the conditional diagnostic \eqref{eq:beta_corrected} remain
   partially open.
 
-  The normalisation exponent $\eta$ is constrained by the scaling argument of
-  Section~\ref{subsec:eta-derivation} to the unique value $\eta = 1/2$, consistent with
-  Weil-amplitude and central-phase decorrelation scaling.
-  It is not yet fixed by a fully rigorous mixing estimate; $\eta = 1/2$ is the
-  reference value throughout~[H3].
-
-  The bibliographic registration of the present manuscript (Zenodo DOI) is pending at the
-  time of writing and will be included in the reference list upon release.
+  The scaling argument of Section~\ref{subsec:eta-derivation} motivates the benchmark
+  $\eta=1/2$ but does not select it uniquely.
+  A specified inter-$q$ estimator and a mixing estimate are both required before $\eta$ can be
+  treated as derived.
 
   \subsection{Two scenarios}
   \label{sec:scenarios}
 
-  \paragraph{Scenario S2-A (Reconciliation).}
-    If, upon pipeline validation, $\delta_{\mathrm{eff}}(q)$ stabilises above $7.0$ as
-    $q \to \infty$, the corrected relation \eqref{eq:beta_corrected} recovers
-    $\beta^{*} \in (0.09, 0.13)$.
-    The programme is self-consistent and O14 closes the admissibility sub-programme for the
-    cascade exponent.
+  \paragraph{Scenario S2-A (phenomenological alignment).}
+    If a specified inter-$q$ estimator stabilised above $7.0$, the imported reciprocal
+    prescription would place $\beta_{\mathrm{diag}}$ in $(0.09,0.13)$.
+    Such alignment would be numerical only; it would not construct a native Heisenberg
+    capacity-to-rate bridge.
 
   \paragraph{Scenario S2-B (Structural revision).}
-    If $\delta_{\mathrm{eff}}(q)$ remains below $5.0$ even in pipeline mode, the
-    observable-class correction alone does not close the gap.
+    The legacy endpoint diagnostic remains below $5.0$ in the pipeline data, so the
+    observable-class bookkeeping does not close the numerical gap.
     The amplification mechanism of O3~\cite{Beau2026a7} would then require modification
     in the exact-block setting, or the link between mass ratios and spectral capacity would
     require a different structural interpretation.
 
-  \section{Physical Consequences}
+  \section{Interpretive Consequences}
   \label{sec:physical}
 
-  \subsection{Scenario S2-A: programme consistency}
+  \subsection{Scenario S2-A: conditional alignment only}
     \label{sec:s2a}
 
-    Under S2-A, the observable-class mismatch is the sole source of the $\delta$--$\beta^{*}$ tension.
-    The Cosmochrony admissibility sub-programme is self-consistent: the cascade exponent $\beta^{*}$
-    is recovered from first principles via the corrected relation \eqref{eq:beta_corrected}, and
-    the generation structure established in SpectralStratigraphy~\cite{Beau2026a4} is unchanged.
+    Even under S2-A, the observable-class mismatch would explain only the numerical tension inside
+    the imported reciprocal prescription.
+    It would not derive the cascade exponent from first principles.
+    The generation structure established in SpectralStratigraphy~\cite{Beau2026a4} is unaffected
+    by this distinction.
 
   \subsection{Scenario S2-B: required revisions}
     \label{sec:s2b}
@@ -749,9 +778,8 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
   \subsection{Quark and neutrino sectors}
     \label{sec:quarks}
 
-    Regardless of which scenario is realised, the corrected relation \eqref{eq:beta_corrected}
-    establishes that $\beta^{*}$ acquires a correction $\epsilon(q)$ that depends on the block
-    variance of the specific representation.
+    Conditional use of \eqref{eq:beta_corrected} assigns a modelled term $\epsilon(q)$ depending
+    on the block variance of the specific representation.
     Extension to the quark and neutrino sectors requires computing the block variance at the
     appropriate $q$ values for those sectors, which is left as open direction O14-O2
     (Section~\ref{sec:open}).
@@ -760,15 +788,14 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
   \label{sec:open}
 
   \paragraph{O14-O1 (Analytical derivation of $\eta$).}
-    The normalisation exponent $\eta = 1/2$ is identified by the scaling argument of
-    Section~\ref{subsec:eta-derivation} as the unique value consistent with Weil amplitude
-    and central-phase decorrelation scaling.
-    A fully rigorous derivation requires explicit mixing estimates for the phases
-    $\theta_b(q)$ across Weil blocks, controlled by the metaplectic phase structure of
-    $\rho_c$ and the BFS geometry of $G_q$.
+    Define an inter-$q$ estimator before assigning a normalisation exponent.
+    The value $\eta=1/2$ is a square-root benchmark motivated by Weil amplitudes and block count,
+    not an intra-$q$ slope correction or a uniqueness theorem.
+    A derivation requires both the estimator definition and mixing estimates for the phases
+    $\theta_b(q)$ across Weil blocks.
 
   \paragraph{O14-O2 (Quark and neutrino exponents).}
-    The corrected relation \eqref{eq:beta_corrected} should be evaluated for the block
+    The conditional diagnostic \eqref{eq:beta_corrected} may be evaluated for the block
     structures associated with the quark and neutrino representations.
     This requires identifying the appropriate Weil-block decomposition for those sectors and
     computing $\delta_{\mathrm{eff}}$ at the corresponding primes.
@@ -797,7 +824,7 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
   \section{Conclusion}
   \label{sec:conclusion}
 
-  We have resolved Source~S2 of O13~\cite{Beau2026a17} by establishing the precise
+  We have partially resolved Source~S2 of O13~\cite{Beau2026a17} by establishing the precise
   observable-class mismatch between the proxy-level O7 derivation~\cite{Beau2026a11} and
   the exact Weil-block observable measured in O12--O13~\cite{Beau2026a16,Beau2026a17}.
   The mismatch has three components:
@@ -805,14 +832,12 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
   (failure of~A2), and the central-phase contribution $\psi_c(\gamma + bx)$
   (failure of~A3).
 
-  The corrected structural relation \eqref{eq:beta_corrected} incorporates all three
-  corrections and recovers the O7 relation in the limit $q \to \infty$.
-  The normalisation exponent $\eta = 1/2$ is derived as the unique value consistent with
-  Weil amplitude scaling and central-phase decorrelation
-  (Section~\ref{subsec:eta-derivation}),
-  and the residual correction $\epsilon(q)$ is identified as the observable imprint of
-  projection residuals, controlled by the phase variance
-  $\mathrm{Var}(\theta)(q)$ (Section~\ref{subsec:eps_connection}).
+  The exact intra-$q$ result is Proposition~\ref{prop:fixed_q_invariance}: a factor
+  $q^{-\eta}$ changes the intercept and cannot change the fitted decay exponent.
+  The term $\eta\log q/\log n_1$ therefore belongs to an endpoint or inter-$q$ estimator whose
+  full definition remains open.
+  Equation~\eqref{eq:beta_corrected} is retained only as a phenomenological diagnostic under the
+  imported LPS reciprocal prescription; it is not a native Heisenberg relation.
 
   The BFS pipeline of O12/O13 was run for all five primes and provides three
   concrete results (Section~\ref{sec:pipeline_results}).
@@ -820,11 +845,10 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
   is near unity within the fitting window, confirming that $\gamma$ does not yet
   diversify in the pre-saturation regime; the central-phase bias $\delta_\gamma$ is
   therefore negligible.
-  The dominant measurable correction is the normalisation term
-  $\eta\log q/\log n_1 \approx 1.03$--$1.06$, extracted directly from the O12/O13
-  fitting windows, which is twice the analytical approximation.
-  Both corrections confirmed $\delta_{\mathrm{eff}} < 5.0$ for all tested primes,
-  consistent with Scenario~S2-B.
+  The dominant displacement in the legacy endpoint diagnostic is
+  $\eta\log q/\log n_1 \approx 1.03$--$1.06$.
+  It does not alter the O12/O13 intra-$q$ slopes.
+  The diagnostic remains below $5.0$ for all tested primes, selecting the historical S2-B branch.
 
   A conceptual distinction revealed by the pipeline is that $\ell_\gamma(n)$ is a
   shell-level observable, whereas the block-level phase bias $\delta_\gamma$ of
@@ -832,12 +856,10 @@ $q^{-1/2}$ to the slope in log-log space is of order $\log(1 + q^{-1/2})/\log n^
   Testing [H1] directly requires storing the intermediate complex fingerprint vectors
   before Gram--Schmidt orthogonalisation (open direction O14-O4).
 
-  The O-series has now traced the full chain from obstruction identification (O8--O9) to
-  exact measurement (O10--O13) to theoretical correspondence (O14).
-  Whether S2-A or S2-B is realised upon pipeline validation, O14 constitutes a complete
-  structural account of the $\delta$--$\beta^{*}$ tension and of the observable-class
-  change that separates the proxy-level and exact-block regimes of the Cosmochrony
-  admissibility sub-programme.
+  O14 therefore supplies a partial intra-$q$ resolution of the observable-class mismatch and
+  isolates the remaining estimator layer.
+  It does not close the cross-substrate capacity-to-rate transfer, which is refuted as a native
+  composite for the corpus-defined Heisenberg objects~\cite{Beau2026sgn}.
 
   \bibliographystyle{plain}
       \bibliography{cosmochrony-bibliography}
