@@ -5,9 +5,11 @@ out/
 # Common build-artefact baseline
 **/.DS_Store
 .venv/
+.matplotlib-cache/
 pdfs/
 media/
 **/__pycache__/
+code/fig_SpectralO14_validation.pdf
 *.py[cod]
 *.aux
 *.bbl

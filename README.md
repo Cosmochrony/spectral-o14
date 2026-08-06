@@ -1,299 +1,96 @@
-This repository contains the source of the **O14** Cosmochrony paper  
-*Observable-Class Mismatch in the Proposed δ → β* Relation on Heisenberg Graphs:
-Block Normalisation, Central-Phase Diagnostics, and the Transfer Boundary*.
+# O14: Why Exact Heisenberg Capacity Does Not Determine the Phenomenological Cascade Rate
 
-**Version 1.0.1.** The exact capacity measurements and the A1--A3 mismatch taxonomy are
-unchanged. This version separates the intra-$q$ slope identity from endpoint/inter-$q$
-normalisation and scopes the reciprocal formula as a conditional cross-substrate diagnostic.
+This repository contains the source and reproduction code for O14 in the Cosmochrony spectral-admissibility
+programme.
 
-This work extends the **spectral admissibility sub-programme** by analysing
-the structural mismatch identified in **O13** (Source S2).
+The paper separates exact Heisenberg capacity from the phenomenological cascade-rate variable used in the imported
+O7 reciprocal prescription.
 
-While **O13** established that the mismatch is not a finite-size artefact,
-it did not explain its origin. The present work provides this explanation
-by identifying the observable-class mismatch between:
+## Core result
 
-- the **proxy-level observable** used in O7
-- the **exact Weil-block observable** measured in O12–O13
+O12's exact rank formula makes the central coordinate algebraically invisible to the projective-capacity observable:
 
-The analysis is both **theoretical** (observable and estimator separation)
-and **numerical** (pipeline-based diagnostics using O12/O13 outputs).
-
----
-
-# Core Result
-
-The paper establishes that the relation
 \[
-\beta^* = \frac{1}{\delta + \tfrac12}
-\]
-is **not derived natively in the exact-block setting**. Conditional on importing that
-LPS reciprocal prescription, the legacy O14 endpoint diagnostic is:
-\[
-\beta_{\mathrm{diag}} = \frac{1}{\delta_{\mathrm{end}}(q) + \tfrac12} + \epsilon(q),
-\]
-where:
-\[
-\delta_{\mathrm{end}}(q)
-= \hat\delta_{\mathrm{exact}}(q)
-- \delta_\gamma(q)
-- \eta \frac{\log q}{\log n^*(q)}.
-  \]
-
-The observable mismatch has three components:
-
-- **block heterogeneity** (A1)
-- **block normalisation by $q$** (A2)
-- **central-phase contribution** (A3)
-
-The square-root benchmark is:
-\[
-\eta = \frac{1}{2},
-\]
-but it is not uniquely derived by the scaling argument.
-At fixed $q$, multiplication by $q^{-\eta}$ changes only the regression intercept, so
-$\eta\log q/\log n^*$ is an endpoint/inter-$q$ term, not an intra-$q$ slope correction.
-
----
-
-# Numerical Result (Pipeline Validation)
-
-Using the real BFS pipeline of **O12/O13**, the paper shows that:
-
-- the central-coordinate coherence is high:
-  \[
-  C(q) \in [0.92, 0.96]
-  \]
-- the induced phase variance is small:
-  \[
-  \mathrm{Var}(\theta) \in [0.09, 0.16]
-  \]
-- the central-phase correction is negligible:
-  \[
-  \delta_\gamma \ll 1
-  \]
-- the dominant displacement in the legacy endpoint diagnostic is:
-  \[
-  \eta \frac{\log q}{\log n_1} \approx 1.03\text{–}1.06
-  \]
-
-The legacy endpoint diagnostic satisfies:
-\[
-\delta_{\mathrm{eff}}(q) < 5.0
-\quad \text{for all tested primes}.
+\Sigma_n^{(c)}=\frac{\Delta r_n^{(c)}}{|S_n|},
+\qquad
+\delta_{\gamma,\mathrm{corr}}=0.
 \]
 
-Under the imported reciprocal formula, this leads to:
+The central coordinate multiplies a Fourier mode by a non-zero scalar phase.
+It changes neither the mode's projective class nor any span rank.
+Block heterogeneity instead comes from overlap among the projective frequencies
+\((\alpha,\beta)=(B/A,C/A)\bmod q\).
+
+Two genuine transfer gaps remain:
+
+- the exact observable is a mean over heterogeneous Weil blocks, while the proxy argument assumes a scalar capacity;
+- the fixed-degree Heisenberg pipeline supplies no changing-degree growth carrier or typed identification with the LPS
+  rate variable.
+
+At fixed \(q\), multiplying by \(q^{-\eta}\) changes the intercept of a log-log regression and cannot change its
+slope.
+For a fitted law \(\Sigma_n=C(q)n^{-\hat\delta(q)}\), the endpoint exponent of
+\(\widetilde\Sigma_n=q^{-\eta}\Sigma_n\) is
+
 \[
-\beta_{\mathrm{diag}} \approx 0.23\text{–}0.33,
+-\frac{\log\widetilde\Sigma_{n^*}}{\log n^*}
+=\hat\delta(q)-\frac{\log C(q)}{\log n^*}
++\eta\frac{\log q}{\log n^*}.
 \]
-which remains outside the phenomenological window $(0.09, 0.13)$.
 
----
+It depends on the fitted amplitude, and the normalisation term has a plus sign.
+The exact pipeline selects neither \(\eta\) nor an endpoint or inter-\(q\) estimator.
 
-# Structural Role of O14
+## Finite-window data
 
-O14 extends the logical sequence initiated in O12–O13:
+The five O12/O13 fitted slopes are
 
-- **O11**: proxy-level observable
-- **O12**: exact Weil-block observable
-- **O13**: asymptotic falsification of finite-size hypothesis (S1)
-- **O14**: partial intra-$q$ resolution and transfer boundary for S2
+\[
+4.42,\ 4.80,\ 4.51,\ 4.27,\ 3.59
+\]
 
-O14 is the first step that:
+at \(q\in\{29,61,101,151,211\}\).
+They rise from \(q=29\) to \(q=61\), then decrease strictly through \(q=211\).
+They are finite-window crossover statistics approaching the exact asymptotic exponent \(\delta=3\), not candidate
+asymptotic exponents for a capacity-to-rate map.
 
-- identifies the **exact source** of the mismatch
-- proves fixed-$q$ slope invariance under $q$-normalisation
-- evaluates the historical endpoint diagnostic on the **real computational pipeline**
+The maximum inter-block variance ratio is above the E2 threshold at \(q=29,61,101\) and below it only at
+\(q=151,211\).
+The shell-level central-coordinate coherence is retained as an independent null control, not as a contribution to
+rank.
 
----
+These statistics supply no numerical input to the imported reciprocal prescription.
+No \(\beta^*\) diagnostic is derived.
 
-# What O14 Adds
+## Reproduction
 
-O14 introduces several key advances:
+The committed `code/o14_pipeline/` summaries are the compact inputs consumed by the paper's reproduction script.
+The exact command from an independent clone is:
 
-- a **precise classification of observable mismatch** (A1–A3)
-- a decomposition:
-  \[
-  \hat\delta_{\mathrm{exact}} = \delta_{\mathrm{geom}} + \delta_\gamma
-  \]
-- a square-root benchmark $\eta = 1/2$ for a future inter-$q$ estimator
-- identification of:
-    - $\delta_\gamma$ as a **finite-window bias**
-    - $\epsilon(q)$ as a **modelled variance term** in the conditional diagnostic
-- a **pipeline-based numerical section**, using real O12/O13 outputs
-- a clarification of:
-    - **shell-level vs block-level observables**
-
----
-
-# Interpretation of the Result
-
-The central conceptual outcome is that:
-
-- the mismatch is **not due to measurement**
-- the mismatch is **not due to finite size**
-- the mismatch is **not due to the central phase**
-
-The legacy endpoint displacement is dominated by its $q$-normalisation term, but that
-term does not alter the intra-$q$ fitted slope. Independently, the native Heisenberg
-growth law does not carry the O7 reciprocal prescription.
-
----
-
-# Outcome: Partial Intra-$q$ Resolution of S2
-
-O14 resolves the intra-$q$ bookkeeping in Source S2 in the following sense:
-
-- the mismatch classes are identified
-- fixed-$q$ slope invariance is explicit
-- the endpoint and cross-substrate layers are isolated as open assumptions
-
-The result is:
-
-- the historical endpoint diagnostic selects **Scenario S2-B**
-- the O7 mapping $\delta \mapsto \beta^*$ has no native Heisenberg derivation
-
----
-
-# Relation to Previous Steps
-
-O14 preserves all structural results of the programme:
-
-- spectral admissibility
-- binary-polyhedral maximality
-- ADE stratigraphy
-- ordering (O1)
-- amplification (O3)
-- structural bounds (O4)
-- admissible-frontier dynamics (O5)
-- no-go (O6)
-- capacity formulation (O7)
-- geometric resolution (O8–O9)
-- algorithmic resolution (O10–O11)
-- exact extraction (O12)
-- asymptotic validation (O13)
-
-It does not modify these results,
-but establishes their **domain of validity**.
-
----
-
-# Conceptual Structure
-
-O14 continues the extended sequence:
-
-1. Observable defined (O7)
-2. Geometry resolved (O9)
-3. Representation adapted (O11)
-4. Exact observable extracted (O12)
-5. Asymptotics tested (O13)
-6. Observable and estimator layers separated (O14)
-
-The programme now establishes:
-
-- the observable is well-defined
-- the measurement is reliable
-- the asymptotic behaviour is controlled
-- the intra-$q$ mismatch is classified
-- the endpoint/inter-$q$ estimator remains open
-
----
-
-# What O14 Resolves
-
-O14 provides:
-
-- a proof that constant-in-$n$ block normalisation cannot change an intra-$q$ slope
-- a decomposition of all correction terms
-- a pipeline-based evaluation of the historical diagnostic
-- a precise localisation of the remaining gap
-
----
-
-# Residual Open Problem
-
-The remaining problem is now clearly identified:
-
-- a native Heisenberg growth carrier for the pair observable is absent
-- the inter-$q$ estimator has not been defined and derived
-
-This implies that at least one of the following must be revised:
-
-- the amplification mechanism of O3
-- the identification of $\beta^*$ with the lepton hierarchy
-- the mapping between spectral capacity and mass ratios
-
----
-
-# Open Directions
-
-1. **Inter-$q$ estimator and η (O14-O1)**
-   Define the estimator before deriving its normalisation from metaplectic phase mixing
-
-2. **Quark and neutrino sectors (O14-O2)**
-   Extension of the conditional diagnostic to other representations
-
-3. **Refined central-phase correction (O14-O3)**
-   Beyond the Weil-bound estimate
-
-4. **Block-level phase observable (O14-O4)**
-   Extract $z_b^{(c)}(n)$ before Gram–Schmidt to test $\delta_\gamma$ directly
-
-5. **Revised amplification mechanism**
-   Adapt O3 to the exact-block regime
-
----
-
-# Status
-
-The programme is now:
-
-- free of algebraic obstruction (**O6**)
-- free of geometric obstruction (**O8–O9**)
-- free of representation obstruction (**O10–O12**)
-- asymptotically validated (**O13**)
-- explicit about the estimator and transfer boundary (**O14**)
-
-It does not assume:
-
-- validity of the O7 relation in the exact regime
-- equivalence between proxy and exact observables
-- convergence toward the phenomenological target
-
----
-
-# Repository Structure
-
-```text
-paper/
-├── out/      # Compiled O14 PDF
-├── tex/      # LaTeX sources
-└── README.md
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r code/requirements.txt
+PYTHON_BIN=.venv/bin/python bash build.sh
 ```
-# Citation
 
-If you reference this work, please cite:
+`build.sh` regenerates `code/fig_SpectralO14_validation.pdf`, verifies it against
+`code/ARTIFACT_SHA256SUMS`, and compiles the paper.
+The figure PDF and the compiled paper PDF are derived, git-ignored artefacts.
 
-J. Beau, Observable-Class Mismatch in the Proposed δ → β* Relation on Heisenberg Graphs:
-Block Normalisation, Central-Phase Diagnostics, and the Transfer Boundary,
-Zenodo, 2026.
+The current citable record is the [Zenodo concept DOI](https://doi.org/10.5281/zenodo.19226272).
 
-# Acknowledgements
+## Open directions
 
-Portions of the derivations, conceptual synthesis, numerical strategy,
-and editorial refinement benefited from iterative interactions with
-large language models used as analytical assistants.
-All theoretical results, computations, and interpretations remain the
-sole responsibility of the author.
+1. Define an inter-\(q\) estimator and derive its normalisation without using the target value.
+2. Supply a native growth carrier and a typed capacity-to-rate identification.
+3. Evaluate any resulting conditional diagnostic for the quark and neutrino sectors only after the carrier and
+   normalisation are fixed.
 
-# Contributions
+## Version history
 
-This repository is intended as a research reference.
-
-Critical feedback, independent verification, alternative implementations
-of the O12/O13 pipeline, and block-level phase extraction methods
-are welcome.
-
-Please open an issue to discuss conceptual points,
-technical details, or possible extensions.
+- **1.1:** Establishes exact central-phase invariance, removes the phase-bias mechanism, classifies the finite-window
+  slopes as non-monotone crossover statistics, and shows why no endpoint or cascade-rate diagnostic follows from a
+  fixed-\(q\) amplitude normalisation.
+- **1.0.1:** Separates fixed-\(q\) slope invariance from endpoint and inter-\(q\) bookkeeping.
+- **1.0:** Initial release.
