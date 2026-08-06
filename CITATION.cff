@@ -1,22 +1,22 @@
 cff-version: 1.2.0
 message: "If you cite this work, please use the metadata from this file."
 title: >-
-  Observable-Class Mismatch in the Proposed δ → β* Relation on Heisenberg Graphs:
-  Block Normalisation, Central-Phase Diagnostics, and the Transfer Boundary
+  Why Exact Heisenberg Capacity Does Not Determine the Phenomenological Cascade Rate:
+  Observable Heterogeneity, Normalisation, and the Transfer Boundary
 type: software
 authors:
   - family-names: "Beau"
     given-names: "Jérôme"
 repository-code: "https://github.com/Cosmochrony/spectral-o14"
 url: "https://cosmochrony.org/science/spectral/program/o14/"
-version: "1.0.1"
+version: "1.1"
 doi: "10.5281/zenodo.19226272"
 license: "CC-BY-4.0"
 preferred-citation:
   type: article
   title: >-
-    Observable-Class Mismatch in the Proposed δ → β* Relation on Heisenberg Graphs:
-    Block Normalisation, Central-Phase Diagnostics, and the Transfer Boundary
+    Why Exact Heisenberg Capacity Does Not Determine the Phenomenological Cascade Rate:
+    Observable Heterogeneity, Normalisation, and the Transfer Boundary
   authors:
     - family-names: "Beau"
       given-names: "Jérôme"
