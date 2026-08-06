@@ -12,6 +12,14 @@
 \input{glyphtounicode}
 \pdfgentounicode=1
 
+\hypersetup{
+  hidelinks,
+  pdftitle={Why Exact Heisenberg Capacity Does Not Determine the Phenomenological Cascade Rate},
+  pdfauthor={Jérôme Beau},
+  pdfsubject={Exact Heisenberg capacity and the open capacity-to-rate transfer},
+  pdfkeywords={Heisenberg graphs, projective capacity, exact rank formula, central-phase invariance}
+}
+
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -40,17 +48,11 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
     Most decisively, the central coordinate $\gamma$ multiplies each exact Fourier mode by a scalar
     phase and is algebraically invisible to rank, so the proposed central-phase correction vanishes
     identically, $\delta_{\gamma,\mathrm{corr}}=0$.
-    Conditional on importing the LPS reciprocal prescription and separately defining an endpoint or
-    inter-$q$ estimator, the surviving bookkeeping gives
-    \[
-      \beta_{\mathrm{diag}} = \frac{1}{\delta_{\mathrm{end}} + \tfrac{1}{2}} + \epsilon(q),
-    \]
-    where $\delta_{\mathrm{end}}
-    =\hat\delta_{\mathrm{exact}}-\eta\log q/\log n^{*}$ and $\epsilon(q)$ remains a modelled
-    variance term.
-    This is not a native Heisenberg derivation of $\beta^{*}$.
-    With the benchmark $\eta=1/2$ and the recorded fitting endpoints, the diagnostic remains below
-    $5.0$ at all five primes and selects S2-B.
+    A factor $q^{-\eta}$ cannot define an endpoint correction from a fitted slope alone: a true
+    endpoint exponent contains $+\eta\log q/\log n^*$ and also depends on the fitted amplitude.
+    No endpoint or inter-$q$ estimator is selected by the exact pipeline.
+    Consequently the LPS reciprocal prescription produces no numerical $\beta^{*}$ diagnostic from
+    these data.
     \textbf{Interpretive outlook.}
     Exact spectral capacity and a phenomenological cascade rate remain distinct observables until a
     growth carrier and a capacity-to-rate identification are independently constructed.
@@ -130,10 +132,10 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
     O14 does not add numerical measurements; it supplies the structural theory that was identified
     as missing in O13~\S8.3.
 
-  \subsection{Logical status of the three central objects}
+  \subsection{Logical status of the central objects}
     \label{sec:logical_status}
 
-    Three objects play distinct logical roles throughout this paper, and their hierarchy must
+    The objects below play distinct logical roles throughout this paper, and their hierarchy must
     be kept clear.
 
     \begin{description}
@@ -147,26 +149,18 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
       $q \in \{29,61,101,151,211\}$ are inputs to O14, not outputs, and are distinct from the
       exact asymptotic exponent $\delta=3$.
 
-      \item[$\delta_{\mathrm{eff}}$]
-      A conditional \emph{endpoint-normalised diagnostic}:
-      $\hat{\delta}_{\mathrm{exact}}-\eta\log q/\log n^{*}$.
-      It is not the intra-$q$ OLS exponent: multiplication by $q^{-\eta}$ changes the intercept,
-      not the slope in $\log n$.
-      The normalisation exponent $\eta$ is a \emph{benchmark parameter}: the value $\eta=1/2$ is
-      used in the numerical table, but no inter-$q$ estimator or selection theorem derives it
-      (open direction O14-O1, Section~\ref{sec:open}).
-
       \item[$\beta^{*}$]
       The phenomenological cascade parameter entering the mass-ratio
       formula of O3~\cite{Beau2026a7}, constrained phenomenologically to
       $\beta^{*} \in (0.09, 0.13)$.
       It is not directly measured by O14.
-      Applying \eqref{eq:beta_corrected} produces only a conditional diagnostic because the
-      reciprocal law is imported from the LPS model.
+      The exact Heisenberg pipeline does not determine an input to the imported reciprocal law.
+      Producing a diagnostic requires a separately defined estimator and a typed cross-substrate
+      identification.
     \end{description}
 
-    The distinction between $\hat{\delta}_{\mathrm{exact}}$ (measured, procedure-dependent) and
-    $\delta_{\mathrm{eff}}$ (an endpoint/inter-$q$ diagnostic) is central to O14's interpretation.
+    The distinction between a finite-window Heisenberg statistic and a phenomenological rate is
+    central to O14's interpretation.
 
   \subsection{Main results}
     \label{sec:results_summary}
@@ -178,11 +172,11 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
       \item We prove that the central phase is exactly invisible to the rank observable, so
       $\delta_{\gamma,\mathrm{corr}}=0$
       (Section~\ref{sec:decomposition}).
-      \item We separate the exact intra-$q$ slope from the endpoint/inter-$q$ diagnostic and
-      state the reciprocal output only under the imported two-substrate hypothesis
+      \item We prove that fixed-$q$ amplitude normalisation cannot change the fitted slope and show
+      why no endpoint correction follows from that identity
       (Section~\ref{sec:corrected_relation}).
-      \item We evaluate the surviving endpoint diagnostic numerically and show that
-      it selects S2-B
+      \item We report the finite-window heterogeneity and central-coordinate null control without
+      propagating either into a cascade-rate diagnostic
       (Section~\ref{sec:numerical}).
     \end{enumerate}
 
@@ -242,8 +236,8 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
 
     For the exact Weil observable, $\Sigma_n^{(c)}$ varies across blocks $c$ at fixed $n$.
     O12 Table~2 and O13 Table~3~\cite{Beau2026a16,Beau2026a17} show that condition (E2), which
-    requires block-by-block universality, is violated at $q \in \{29,53,61\}$ and satisfied only at
-    $q \in \{101,151,211\}$ after the representation variety has been sufficiently sampled.
+    requires block-by-block universality, is violated at $q \in \{29,53,61,101\}$ and satisfied only
+    at $q \in \{151,211\}$.
 
     Consequently, $\hat{\delta}_{\mathrm{exact}}$ is a property of the \emph{mean}
     $\bar{\Sigma}_n$, not of an individual scalar observable.
@@ -252,7 +246,7 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
 
     \begin{proposition}[Scope of mean universality]
       \label{prop:mean_universality}
-      Suppose $\bar{\Sigma}_n \sim C_0 \, n^{-\delta_{\mathrm{eff}}}$ holds with $R^2 \geq 0.97$ over
+      Suppose $\bar{\Sigma}_n \sim C_0 \, n^{-\delta_{\mathrm{fit}}}$ holds with $R^2 \geq 0.97$ over
       a fitting window satisfying condition~(E1$'$).
       Then the mean has a well-defined finite-window decay exponent.
       This discharges only the scalar power-law premise of the O7 argument.
@@ -331,13 +325,11 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
 
   \begin{proposition}[Exact central-phase invariance]
     \label{prop:gamma_bias}
-    For every odd prime $q$, every faithful block $c$, and every BFS depth $n$, the exact rank
-    observable is independent of the central coordinates of the visited elements.
-    Consequently,
+    For every odd prime $q$, every generic multi-index $c=(c_1,c_2,c_3)$, and every BFS depth $n$,
+    the exact rank observable is independent of the central coordinates of the visited elements.
+    Consequently, any decay-exponent correction attributed to the central coordinate obeys
     \begin{equation}
       \label{eq:gamma_bias}
-      \Sigma_n^{\gamma}\equiv0,
-      \qquad
       \delta_{\gamma,\mathrm{corr}}=0.
     \end{equation}
   \end{proposition}
@@ -345,8 +337,8 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
   \begin{proof}
     O12's exact rank formula identifies $\dim W_{\leq n}^{(c)}$ with the cardinality of the set of
     projective frequencies $(\alpha,\beta)=(B/A,C/A)\bmod q$ reached by depth $n$.
-    The central coordinate appears only through the non-zero scalar
-    $e^{2\pi i c\gamma/q}$ multiplying a single Fourier mode.
+    The central coordinate appears only through a non-zero unit-modulus scalar multiplying a single
+    Fourier mode.
     Scalar multiplication leaves that mode's projective class and every span dimension unchanged.
     Hence neither $\dim W_{\leq n}^{(c)}$ nor $\Sigma_n^{(c)}$ depends on $\gamma$.
     Any exponent correction attributed to $\gamma$ is therefore exactly zero~\cite{Beau2026a16}.
@@ -358,86 +350,61 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
     A Weil character-sum bound cannot convert this independent statistic into a rank correction.
   \end{remark}
 
-  \section{Conditional Reciprocal Diagnostic}
+  \section{Why a Fitted Slope Does Not Define an Endpoint Rate}
   \label{sec:corrected_relation}
 
-  \begin{proposition}[Conditional endpoint diagnostic]
+  \begin{proposition}[Endpoint exponent of an amplitude-renormalised fit]
     \label{thm:corrected}
-    Assume all of the following:
-    (i) the LPS capacity-to-rate prescription \eqref{eq:beta_delta} is imported as a
-    cross-substrate hypothesis;
-    (ii) $\delta_{\mathrm{eff}}$ is defined by an endpoint or specified inter-$q$ estimator rather
-    than the intra-$q$ OLS slope; and
-    (iii) the block-variance model used below holds.
-    Then the bookkeeping defines the phenomenological diagnostic
+    Suppose a fitted law at fixed $q$ is
+    $\Sigma_n=C(q)n^{-\hat\delta(q)}$, and define
+    $\widetilde\Sigma_n=q^{-\eta}\Sigma_n$.
+    Its endpoint exponent at $n^*>1$ is
     \begin{equation}
-      \label{eq:beta_corrected}
-      \beta_{\mathrm{diag}}(q)
-      = \frac{1}{\delta_{\mathrm{eff}}(q) + \tfrac{1}{2}} + \epsilon(q),
+      \label{eq:endpoint_identity}
+      -\frac{\log\widetilde\Sigma_{n^*}}{\log n^*}
+      =\hat\delta(q)-\frac{\log C(q)}{\log n^*}
+      +\eta\frac{\log q}{\log n^*}.
     \end{equation}
-    where
-    \begin{equation}
-      \label{eq:delta_eff}
-      \delta_{\mathrm{eff}}(q) = \hat{\delta}_{\mathrm{exact}}(q)
-      - \eta \cdot \frac{\log q}{\log n^{*}(q)},
-    \end{equation}
-    and $\epsilon(q)=O(V_n^{\max}(q))$ is a modelled block-variance term.
-    The formula does not identify $\beta_{\mathrm{diag}}$ with the native Heisenberg span-growth
-    exponent or establish $\beta^{*}$.
   \end{proposition}
 
   \begin{proof}
-    Under premise~(i), substitution of the endpoint definition \eqref{eq:delta_eff} into the
-    imported reciprocal law gives \eqref{eq:beta_corrected}; premise~(iii) appends the stated
-    variance term.
-    Proposition~\ref{prop:fixed_q_invariance} shows why this is not a correction of the intra-$q$
-    regression slope.
-    None of these algebraic substitutions supplies a native Heisenberg growth equation.
+    Substitute $\widetilde\Sigma_{n^*}=q^{-\eta}C(q)(n^*)^{-\hat\delta(q)}$ and take
+    $-\log(\cdot)/\log n^*$.
   \end{proof}
 
   \begin{remark}
-    Equation~\eqref{eq:delta_eff} contains one non-trivial endpoint term.
-    Proposition~\ref{prop:gamma_bias} removes the central-phase term algebraically, while
-    Proposition~\ref{prop:fixed_q_invariance} shows that $q^{-\eta}$ changes only the intercept of a
-    fixed-$q$ regression.
+    Equation~\eqref{eq:endpoint_identity} cannot be reconstructed from the fitted slope alone.
+    It contains the amplitude $C(q)$, and the $q^{-\eta}$ factor contributes with a plus sign.
+    The exact pipeline supplies no rule selecting $\eta$, $n^*(q)$, or an inter-$q$ estimator.
+    Substitution into \eqref{eq:beta_delta} would therefore add assumptions rather than derive a
+    cascade-rate diagnostic.
   \end{remark}
 
-  \section{Pipeline Evaluation of the Conditional Diagnostic}
+  \section{Finite-Window Pipeline Diagnostics}
   \label{sec:numerical}
 
   The companion script \texttt{SpectralO14\_simulation.py} reads the committed O12/O13 pipeline
-  files and extracts $\hat\delta_{\mathrm{exact}}$, the fitting endpoint $n_1$, and the shell-level
-  central-coordinate coherence.
+  files and extracts $\hat\delta_{\mathrm{exact}}$, the fitting window, the maximum inter-block
+  variance ratio $V_n^{\max}$, and the shell-level central-coordinate coherence.
   The coherence statistic is retained only as a null control: Proposition~\ref{prop:gamma_bias}
   proves that it cannot affect $\Sigma_n^{(c)}$.
 
-  With the explicit benchmark $\eta=1/2$, define
-  \begin{equation}
-    \label{eq:norm_corr}
-    \delta_{\mathrm{end}}(q)=\hat\delta_{\mathrm{exact}}(q)
-    -\eta\frac{\log q}{\log n_1(q)}.
-  \end{equation}
-  The benchmark is a chosen normalisation for this displayed endpoint statistic.
-  It is not derived from phase decorrelation and does not define an inter-$q$ estimator.
-
   \begin{table}[ht]
     \centering
-    \caption{Conditional endpoint diagnostic from the O12/O13 pipeline.
-      The finite-window slopes are crossover statistics; $\eta=1/2$ is a benchmark, and the exact
-      central-phase correction is zero.
-      Neither $\delta_{\mathrm{end}}$ nor $\beta_{\mathrm{diag}}$ is a native fitted exponent or a
-      derived cascade parameter.}
-    \label{tab:endpoint}
+    \caption{Finite-window diagnostics from the O12/O13 pipeline.
+      Condition~(E2) requires $V_n^{\max}<1$.
+      The slopes are crossover statistics, and $C_\gamma$ is an independent null control rather
+      than a contribution to rank.}
+    \label{tab:pipeline}
     \begin{tabular}{cccccc}
       \hline
-      $q$ & $\hat\delta_{\mathrm{exact}}$ & $n_1$ & $\eta\log q/\log n_1$ &
-      $\delta_{\mathrm{end}}$ & $\beta_{\mathrm{diag}}$ \\
+      $q$ & $\hat\delta_{\mathrm{exact}}$ & $[n_0,n_1]$ & $V_n^{\max}$ & E2 & $C_\gamma$ \\
       \hline
-      29  & 4.416 & 5  & 1.0461 & 3.3696 & 0.2584 \\
-      61  & 4.799 & 7  & 1.0563 & 3.7423 & 0.2357 \\
-      101 & 4.515 & 10 & 1.0022 & 3.5124 & 0.2492 \\
-      151 & 4.267 & 12 & 1.0096 & 3.2570 & 0.2662 \\
-      211 & 3.588 & 13 & 1.0433 & 2.5452 & 0.3284 \\
+      29  & 4.416 & $[2,5]$  & 5.198 & false & 0.9249 \\
+      61  & 4.799 & $[2,7]$  & 2.750 & false & 0.9492 \\
+      101 & 4.515 & $[3,10]$ & 1.600 & false & 0.9276 \\
+      151 & 4.267 & $[3,12]$ & 0.653 & true  & 0.9373 \\
+      211 & 3.588 & $[3,13]$ & 0.302 & true  & 0.9563 \\
       \hline
     \end{tabular}
   \end{table}
@@ -445,89 +412,55 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
   \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{../code/fig_SpectralO14_validation}
-    \caption{Conditional endpoint bookkeeping from the O12/O13 data.
+    \caption{Finite-window diagnostics from the O12/O13 data.
       Panel~(A) displays the non-monotone finite-window slopes and the exact asymptotic exponent
       $\delta=3$.
-      Panel~(B) compares those slopes with $\delta_{\mathrm{end}}$ under the benchmark $\eta=1/2$.
-      Panel~(C) applies the imported reciprocal formula; all values remain outside the
-      phenomenological interval $(0.09,0.13)$.
-      Panel~(D) records the shell-level central-coordinate coherence as an independent null control,
+      Panel~(B) shows that E2 is false through $q=101$ and true at $q=151,211$.
+      Panel~(C) records the shell-level central-coordinate coherence as an independent null control,
       not as a contribution to rank.}
     \label{fig:validation}
   \end{figure}
 
-  The endpoint term lies between $1.00$ and $1.06$, and
-  $\delta_{\mathrm{end}}<5.0$ at every tested prime.
-  This numerical fact selects S2-B inside the conditional diagnostic.
-  The stronger transfer obstruction is independent of the table: the corpus supplies no native
+  The table supplies no endpoint or inter-$q$ capacity exponent and therefore no numerical input to
+  \eqref{eq:beta_delta}.
+  The transfer obstruction is independent of these diagnostics: the corpus supplies no native
   Heisenberg growth law implementing \eqref{eq:beta_delta}~\cite{Beau2026sgn}.
-
-  \subsection{Two scenarios}
-  \label{sec:scenarios}
-
-  \paragraph{Scenario S2-A (phenomenological alignment).}
-    If a specified inter-$q$ estimator stabilised above $7.0$, the imported reciprocal
-    prescription would place $\beta_{\mathrm{diag}}$ in $(0.09,0.13)$.
-    Such alignment would be numerical only; it would not construct a native Heisenberg
-    capacity-to-rate bridge.
-
-  \paragraph{Scenario S2-B (Structural revision).}
-    The conditional endpoint diagnostic remains below $5.0$ in the pipeline data, so the
-    observable-class bookkeeping does not close the numerical gap.
-    The amplification mechanism of O3~\cite{Beau2026a7} would then require modification
-    in the exact-block setting, or the link between mass ratios and spectral capacity would
-    require a different structural interpretation.
 
   \section{Interpretive Consequences}
   \label{sec:physical}
 
-  \subsection{Scenario S2-A: conditional alignment only}
-    \label{sec:s2a}
+  \subsection{What the exact calculation does and does not determine}
 
-    Even under S2-A, the observable-class mismatch would explain only the numerical tension inside
-    the imported reciprocal prescription.
-    It would not derive the cascade exponent from first principles.
-    The generation structure established in SpectralStratigraphy~\cite{Beau2026a4} is unaffected
-    by this distinction.
-
-  \subsection{Scenario S2-B: required revisions}
-    \label{sec:s2b}
-
-    Under S2-B, at least one of the following modifications is required:
+    The exact calculation determines a rank-based capacity observable and its unfolded exponent.
+    It does not determine a particle-hierarchy rate.
+    Connecting these objects requires all of the following additions:
     \begin{enumerate}
-      \item The amplification mechanism of O3~\cite{Beau2026a7} must be rederived in the exact-block
-      setting, potentially yielding a different functional form for the
-      $\delta \mapsto \beta^{*}$ map.
-      \item The identification of $\beta^{*}$ with the charged-lepton cascade exponent requires
-      reexamination, possibly via a sector-dependent exponent.
+      \item A growth carrier on which a productive rate is defined.
+      \item A specified estimator that maps the Heisenberg capacity data to that carrier.
       \item The cross-substrate identification between Heisenberg capacity and the LPS rate variable
-      must be supplied with a typed carrier and its own derivation.
+      with its own derivation and hypotheses.
     \end{enumerate}
+    The generation structure established in SpectralStratigraphy~\cite{Beau2026a4} is unaffected by
+    this separation.
 
-  \subsection{Quark and neutrino sectors}
+  \subsection{Other particle sectors}
     \label{sec:quarks}
 
-    Conditional use of \eqref{eq:beta_corrected} assigns a modelled term $\epsilon(q)$ depending
-    on the block variance of the specific representation.
-    Extension to the quark and neutrino sectors requires computing the block variance at the
-    appropriate $q$ values for those sectors, which is left as open direction O14-O2
-    (Section~\ref{sec:open}).
+    Applying the reciprocal prescription to quark or neutrino sectors would require the same missing
+    carrier, estimator, and cross-substrate identification.
+    Computing more block statistics cannot supply those objects by itself.
 
   \section{Open Directions}
   \label{sec:open}
 
   \paragraph{O14-O1 (Definition and normalisation of an inter-$q$ estimator).}
     Define an inter-$q$ estimator before assigning a normalisation exponent.
-    The value $\eta=1/2$ is a numerical benchmark, not an intra-$q$ slope correction or a
-    uniqueness theorem.
     A derivation requires an explicit estimator, a reason to normalise its amplitudes by a power of
     $q$, and a proof selecting that power without using the target value.
 
-  \paragraph{O14-O2 (Quark and neutrino exponents).}
-    The conditional diagnostic \eqref{eq:beta_corrected} may be evaluated for the block
-    structures associated with the quark and neutrino representations.
-    This requires identifying the appropriate Weil-block decomposition for those sectors and
-    computing $\delta_{\mathrm{eff}}$ at the corresponding primes.
+  \paragraph{O14-O2 (Native capacity-to-rate carrier).}
+    Construct a growth process carrying the exact Heisenberg observable and derive its productive
+    rate before comparing that rate with a particle-hierarchy parameter.
 
   \section{Conclusion}
   \label{sec:conclusion}
@@ -542,17 +475,15 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
 
   The exact intra-$q$ result is Proposition~\ref{prop:fixed_q_invariance}: a factor
   $q^{-\eta}$ changes the intercept and cannot change the fitted decay exponent.
-  The term $\eta\log q/\log n_1$ therefore belongs to an endpoint or inter-$q$ estimator whose
-  full definition remains open.
-  Equation~\eqref{eq:beta_corrected} is retained only as a phenomenological diagnostic under the
-  imported LPS reciprocal prescription; it is not a native Heisenberg relation.
+  A true endpoint exponent also contains the fitted amplitude, and the $q^{-\eta}$ factor contributes
+  with the plus sign in Proposition~\ref{thm:corrected}.
+  The exact pipeline selects neither $\eta$ nor an endpoint or inter-$q$ estimator.
 
   The five finite-window slopes are non-monotone crossover statistics around the exact asymptotic
   exponent $\delta=3$.
-  Under the explicit benchmark $\eta=1/2$, the sole displacement in the conditional endpoint
-  diagnostic is $\eta\log q/\log n_1\approx1.00$--$1.06$.
-  It does not alter the O12/O13 intra-$q$ slopes.
-  The diagnostic remains below $5.0$ for all tested primes, selecting S2-B.
+  Their block-heterogeneity diagnostic E2 is false through $q=101$ and true at $q=151,211$.
+  Shell-level central-coordinate coherence remains a null control with no effect on rank.
+  None of these statistics defines a numerical $\beta^{*}$ diagnostic.
 
   O14 therefore supplies a partial intra-$q$ resolution of the observable-class mismatch and
   isolates the remaining estimator layer.
@@ -566,8 +497,8 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
   Their numerical proximity or separation cannot identify them.
   The constructive task is to provide a growth carrier, a typed map from capacity to that carrier's
   rate, and a selector for any cross-prime normalisation.
-  Until those elements exist, the reciprocal formula is a conditional comparison tool rather than a
-  prediction of the exact spectral pipeline.
+  Until those elements exist, the reciprocal formula cannot be evaluated from the exact spectral
+  pipeline as a prediction or diagnostic.
 
   \bibliographystyle{plain}
       \bibliography{cosmochrony-bibliography}

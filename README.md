@@ -29,10 +29,19 @@ Two genuine transfer gaps remain:
 
 At fixed \(q\), multiplying by \(q^{-\eta}\) changes the intercept of a log-log regression and cannot change its
 slope.
-The expression \(\eta\log q/\log n^*\) therefore belongs only to an explicitly defined endpoint or inter-\(q\)
-statistic.
+For a fitted law \(\Sigma_n=C(q)n^{-\hat\delta(q)}\), the endpoint exponent of
+\(\widetilde\Sigma_n=q^{-\eta}\Sigma_n\) is
 
-## Finite-window data and conditional diagnostic
+\[
+-\frac{\log\widetilde\Sigma_{n^*}}{\log n^*}
+=\hat\delta(q)-\frac{\log C(q)}{\log n^*}
++\eta\frac{\log q}{\log n^*}.
+\]
+
+It depends on the fitted amplitude, and the normalisation term has a plus sign.
+The exact pipeline selects neither \(\eta\) nor an endpoint or inter-\(q\) estimator.
+
+## Finite-window data
 
 The five O12/O13 fitted slopes are
 
@@ -45,19 +54,13 @@ They rise from \(q=29\) to \(q=61\), then decrease strictly through \(q=211\).
 They are finite-window crossover statistics approaching the exact asymptotic exponent \(\delta=3\), not candidate
 asymptotic exponents for a capacity-to-rate map.
 
-Conditional on importing the LPS reciprocal prescription and choosing the explicit benchmark \(\eta=1/2\), O14
-displays
+The maximum inter-block variance ratio is above the E2 threshold at \(q=29,61,101\) and below it only at
+\(q=151,211\).
+The shell-level central-coordinate coherence is retained as an independent null control, not as a contribution to
+rank.
 
-\[
-\delta_{\mathrm{end}}(q)
-=\hat\delta_{\mathrm{exact}}(q)-\eta\frac{\log q}{\log n_1(q)},
-\qquad
-\beta_{\mathrm{diag}}(q)=\frac{1}{\delta_{\mathrm{end}}(q)+\tfrac12}.
-\]
-
-The endpoint statistic remains below \(5.0\) at all five primes, and the reciprocal diagnostic remains outside the
-phenomenological interval \((0.09,0.13)\).
-This selects S2-B inside the conditional comparison, but it does not derive a native Heisenberg cascade rate.
+These statistics supply no numerical input to the imported reciprocal prescription.
+No \(\beta^*\) diagnostic is derived.
 
 ## Reproduction
 
@@ -87,7 +90,7 @@ The current citable record is the [Zenodo concept DOI](https://doi.org/10.5281/z
 ## Version history
 
 - **1.1:** Establishes exact central-phase invariance, removes the phase-bias mechanism, classifies the finite-window
-  slopes as non-monotone crossover statistics, and reduces the endpoint diagnostic to its sole benchmark-normalisation
-  term.
+  slopes as non-monotone crossover statistics, and shows why no endpoint or cascade-rate diagnostic follows from a
+  fixed-\(q\) amplitude normalisation.
 - **1.0.1:** Separates fixed-\(q\) slope invariance from endpoint and inter-\(q\) bookkeeping.
 - **1.0:** Initial release.
