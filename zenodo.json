@@ -4,5 +4,5 @@
   "main_tex": "tex/SpectralO14.tex",
   "zenodo_id": 19226272,
   "doi": "10.5281/zenodo.19226272",
-  "notes": "Version 1.1 establishes exact central-phase invariance of the rank observable, removes the phase-bias mechanism, classifies the five finite-window slopes as non-monotone crossover statistics toward the exact asymptotic exponent 3, and proves that no endpoint or cascade-rate diagnostic follows from fixed-q amplitude normalisation without a fitted amplitude, a selected estimator, and a native transfer carrier."
+  "notes": "Version 1.2 (alpha-1). Withdraws the reciprocal equality as a consequence of O6/O7: O6 proves only a conditional upper growth bound and supplies a countermodel to equality. The historical exponent range does not select the cascade rate. Independent observable, parity, aggregation and crossing-rank results are unchanged; reciprocal numerical values are retained only as explicitly defined legacy diagnostics."
 }

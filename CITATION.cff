@@ -9,7 +9,7 @@ authors:
     given-names: "Jérôme"
 repository-code: "https://github.com/Cosmochrony/spectral-o14"
 url: "https://cosmochrony.org/science/spectral/program/o14/"
-version: "1.1"
+version: "1.2"
 doi: "10.5281/zenodo.19226272"
 license: "CC-BY-4.0"
 preferred-citation:

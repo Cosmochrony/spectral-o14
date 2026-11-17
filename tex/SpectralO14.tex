@@ -31,7 +31,7 @@
 Observable Heterogeneity, Normalisation, and the Transfer Boundary}
 
 \author{J\'er\^ome Beau}
-\date{2026\\Version 1.1}
+\date{2026\\Version 1.2}
 
 \begin{document}
   \maketitle
@@ -41,7 +41,9 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
     $\Sigma_n^{(c)}=\Delta r_n^{(c)}/|S_n|$, and the exact asymptotic capacity exponent $\delta=3$.
     The five reported finite-window slopes $4.42,4.80,4.51,4.27,3.59$ are non-monotone crossover
     statistics, not candidate asymptotic exponents for a capacity-to-rate map.
-    We determine which parts of the proposed O7 transfer survive for the exact observable.
+    O6 supplies only a conditional upper bound on the growth exponent, not the reciprocal equality
+    formerly imported through O7; the historical target interval does not select a cascade rate.
+    We determine which observable comparisons survive for the exact observable.
     The mean over heterogeneous Weil blocks supplies only a scalar power-law premise.
     A factor $q^{-\eta}$ is constant in any fixed-$q$ regression and changes its intercept, not its
     slope.
@@ -74,19 +76,23 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
   The Cosmochrony framework~\cite{Cosmochrony,Beau2026c} derives particle-physics observables from
   spectral properties of relational graphs associated with binary polyhedral subgroups of
   $\mathrm{SU}(2)$.
-  Within the admissibility sub-programme, a central chain of papers---O3
-  through O7~\cite{Beau2026a7,Beau2026a8,Beau2026a9,Beau2026a10,Beau2026a11}---proposes, on a
-  changing-degree LPS family~\cite{LubotzkyPhillipsSarnak1988}, the relation
+  Within the admissibility sub-programme, the legacy reciprocal comparison associated with
+  O3--O7 is
   \begin{equation}
     \label{eq:beta_delta}
-    \beta^{*} = \frac{1}{\delta + \tfrac{1}{2}},
+    \beta_{\mathrm{diag}}(\delta) := \frac{1}{\delta + \tfrac{1}{2}}.
   \end{equation}
-  linking the cascade exponent $\beta^{*}$ to the capacity decay exponent $\delta$.
-  Charged-lepton mass ratios constrain $\beta^{*} \in (0.09, 0.13)$~\cite{Beau2026a7}; importing
-  \eqref{eq:beta_delta} then induces the target $\delta \in [7.4, 10.6]$.
-  The equation is not a native consequence of the fixed-degree Heisenberg Cayley cascade:
-  the corpus supplies neither its changing valence nor a growth process carrying the pair
-  observable~\cite{Beau2026sgn}.
+  This defines a diagnostic, not an equality for the physical cascade exponent $\beta^{*}$.
+  O6~\cite{Beau2026a10} proves only $\beta_{\mathrm{eff}}\leq1/(\alpha+1/2)$ under its
+  effective growth hypothesis (G$_R$) and $\mathcal R_n\sim p(n)^{-\alpha}$.
+  It gives no lower bound and explicitly refutes equality with $\alpha=8$, $p(n)=n^{1/17}$.
+  The mass-fitted window $\beta^{*}\in(0.09,0.13)$~\cite{Beau2026a7} therefore implies neither
+  $\delta\in[7.4,10.6]$ nor equality with \eqref{eq:beta_delta}.
+  Under O6's premises, compatibility with that beta window requires only
+  $\alpha<1/0.09-1/2\approx10.611$; no lower alpha endpoint follows.
+  The interval $[7.4,10.6]$ is a historical comparison range.
+  Independently, the fixed-degree Heisenberg cascade supplies neither the changing LPS valence
+  nor a growth process carrying the pair observable~\cite{Beau2026sgn}.
 
   Papers O8--O13~\cite{Beau2026a12,Beau2026a13,Beau2026a14,Beau2026a15,Beau2026a16,Beau2026a17}
   develop the computational machinery to measure $\delta$ on Heisenberg graphs
@@ -106,7 +112,7 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
     \item \textbf{Normalisation gap.}
     $\Sigma_n^{(c)}$ is normalised by the BFS shell size $|S_n|$, not by the block
     dimension $q$.
-    The O7 derivation absorbs this normalisation at the proxy level; its effect in the
+    The legacy proxy comparison absorbs this normalisation; its effect in the
     exact-block setting is not derived.
     \item \textbf{Carrier and identification gap.}
     The exact rank formula supplies a capacity observable on fixed-degree Heisenberg graphs.
@@ -156,8 +162,8 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
       $\beta^{*} \in (0.09, 0.13)$.
       It is not directly measured by O14.
       The exact Heisenberg pipeline does not determine an input to the imported reciprocal law.
-      Producing a diagnostic requires a separately defined estimator and a typed cross-substrate
-      identification.
+      A numerical diagnostic can be defined by convention; a physical rate requires a separately
+      derived growth law and a typed identification, not just a change of observable.
     \end{description}
 
     The distinction between a finite-window Heisenberg statistic and a phenomenological rate is
@@ -167,7 +173,7 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
     \label{sec:results_summary}
 
     \begin{enumerate}
-      \item We exhibit the precise class of observable implicit in the O7 derivation and show it
+      \item We exhibit the class of observable used in the legacy proxy comparison and show it
       differs from the exact-block observable through two surviving gaps
       (Section~\ref{sec:mismatch}).
       \item We prove that the central phase is exactly invisible to the rank observable, so
@@ -208,13 +214,14 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
     $|S_n|$ is the BFS shell size at depth $n$.
     The mean over blocks is $\bar{\Sigma}_n = \mathbb{E}_c[\Sigma_n^{(c)}]$.
 
-  \subsection{Proxy-level capacity and the O7 derivation}
+  \subsection{Proxy-level capacity and the legacy comparison}
     \label{sec:o7}
 
-    The O7 derivation~\cite{Beau2026a11} operates on a \emph{scalar global capacity}
-    $C_n^{\mathrm{proxy}}$, defined via a Fourier-character proxy that abelianises the representation
-    structure.
-    The derivation yields \eqref{eq:beta_delta} under three implicit assumptions:
+    The legacy comparison associates a \emph{scalar global capacity}
+    $C_n^{\mathrm{proxy}}$ with the reciprocal diagnostic inherited from O7~\cite{Beau2026a11}.
+    The Fourier-character proxy abelianises the representation structure.
+    The following three observable assumptions describe this comparison; they do not derive
+    an equality for $\beta^{*}$, even together:
     \begin{enumerate}
       \item[(A1)] The observable is a \emph{scalar} function of BFS depth $n$, independent of the
       representation label $c$.
@@ -242,7 +249,7 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
 
     Consequently, $\hat{\delta}_{\mathrm{exact}}$ is a property of the \emph{mean}
     $\bar{\Sigma}_n$, not of an individual scalar observable.
-    The O7 argument operates on the latter; its extension to the former supplies only the scalar
+    The proxy comparison operates on the latter; its extension to the former supplies only the scalar
     power-law premise and leaves the growth-model premises separate.
 
     \begin{proposition}[Scope of mean universality]
@@ -250,7 +257,7 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
       Suppose $\bar{\Sigma}_n \sim C_0 \, n^{-\delta_{\mathrm{fit}}}$ holds with $R^2 \geq 0.97$ over
       a fitting window satisfying condition~(E1$'$).
       Then the mean has a well-defined finite-window decay exponent.
-      This discharges only the scalar power-law premise of the O7 argument.
+      This supplies only a scalar power-law premise, not a reciprocal growth law.
       It does not supply the changing-degree growth equation, the multiplicative coupling of
       redundancy to its productive frontier, or the identification of the Heisenberg mean with
       the LPS capacity variable.
@@ -440,6 +447,8 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
       \item A specified estimator that maps the Heisenberg capacity data to that carrier.
       \item The cross-substrate identification between Heisenberg capacity and the LPS rate variable
       with its own derivation and hypotheses.
+      \item An independently justified rate-selection mechanism: the one-sided O6 inequality alone
+      cannot supply equality, even after transport.
     \end{enumerate}
     The generation structure established in SpectralStratigraphy~\cite{Beau2026a4} is unaffected by
     this separation.
@@ -468,6 +477,9 @@ Observable Heterogeneity, Normalisation, and the Transfer Boundary}
 
   The exact Weil-block observable and the proxy-level O7 prescription belong to different
   observable classes~\cite{Beau2026a11,Beau2026a16,Beau2026a17}.
+  Independently, O6 supplies a conditional upper growth bound, not the reciprocal equality.
+  Its countermodel refutes that equality before transport is considered; no physical selection of
+  $[7.4,10.6]$ follows from it.
   Two load-bearing gaps survive: the exact quantity is a mean over heterogeneous blocks, and no
   native Heisenberg growth carrier identifies that mean with the LPS rate variable.
   Projective-frequency overlap supplies the relevant within-block geometry.

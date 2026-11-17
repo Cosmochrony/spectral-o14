@@ -6,6 +6,13 @@ programme.
 The paper separates exact Heisenberg capacity from the phenomenological cascade-rate variable used in the imported
 O7 reciprocal prescription.
 
+O6 proves only $\beta_{\mathrm{eff}}\leq1/(\alpha+1/2)$ under its effective growth hypothesis
+(G_R) and a power-law redundancy Ansatz in the exploration variable $p$.
+Its countermodel $\alpha=8$, $p=n^{1/17}$ satisfies those premises but refutes equality.
+The reciprocal is retained only as a defined legacy diagnostic; the historical range $[7.4,10.6]$
+is neither a necessary nor a sufficient condition selecting the charged-lepton cascade window.
+
+
 ## Core result
 
 O12's exact rank formula makes the central coordinate algebraically invisible to the projective-capacity observable:
@@ -88,6 +95,9 @@ The current citable record is the [Zenodo concept DOI](https://doi.org/10.5281/z
    normalisation are fixed.
 
 ## Version history
+
+- **1.2:** Withdraws the reciprocal equality as an O6/O7 consequence and the numerical-window inference based on it.
+  The central-phase, slope-invariance and finite-window results are unchanged.
 
 - **1.1:** Establishes exact central-phase invariance, removes the phase-bias mechanism, classifies the finite-window
   slopes as non-monotone crossover statistics, and shows why no endpoint or cascade-rate diagnostic follows from a
