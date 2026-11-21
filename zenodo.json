@@ -4,5 +4,5 @@
   "main_tex": "tex/SpectralO14.tex",
   "zenodo_id": 19226272,
   "doi": "10.5281/zenodo.19226272",
-  "notes": "Version 1.2 (alpha-1). Withdraws the reciprocal equality as a consequence of O6/O7: O6 proves only a conditional upper growth bound and supplies a countermodel to equality. The historical exponent range does not select the cascade rate. The exact central-phase invariance, fixed-q slope invariance and finite-window diagnostics are unchanged. Reciprocal numerical values are retained only as explicitly defined legacy diagnostics."
+  "notes": "Version 1.2.1. Bibliography only: prints the new title of O6 (Matrix-Level Dynamic Redundancy and a Conditional Upper Bound on the Cascade Exponent β) and, where cited, of O5 (Finite Character-Trace Saturation and the Limits of Vertex-Based Class-Function Cascades). No result is changed."
 }
